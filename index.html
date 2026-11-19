@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f2f4f7">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <title>Автосервис в Волгограде — ремонт и обслуживание автомобилей | АБС-Автосервис</title>
+  <meta name="description" content="Ремонт ходовой, ТО, кузовной ремонт, шиномонтаж и сход-развал в Дзержинском районе Волгограда. Ежедневно 8:00–20:00. Запись онлайн и по телефону.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="АБС-Автосервис в Волгограде — ремонт, кузов, цены">
+  <meta property="og:description" content="Свой сервис на Полоненко, 15Б с 2009 года: два цеха, кузовной ремонт и ТО. Ежедневно 8:00–20:00.">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="preload" href="assets/fonts/onest-full-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/unbounded-hero-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "АБС-Автосервис",
+    "telephone": "+79370854888",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Полоненко, 15Б",
+      "addressLocality": "Волгоград",
+      "addressRegion": "Волгоградская область",
+      "postalCode": "400081",
+      "addressCountry": "RU"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }],
+    "priceRange": "₽",
+    "paymentAccepted": "Наличные, банковская карта, QR-код, безналичный расчёт"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#main" aria-label="АБС-Автосервис — к началу страницы">
+        <img src="assets/img/abs-logo.webp" width="320" height="170" alt="АБС Автосервис" decoding="async">
+      </a>
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a href="#situations">Ситуации</a>
+        <a href="#prices">Услуги и цены</a>
+        <a href="#body">Кузовной</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div class="header-contact">
+        <span>Ежедневно 8:00–20:00</span>
+        <a href="tel:+79370854888" data-phone-click="header">8-937-085-48-88</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="hero-location">Волгоград <span aria-hidden="true">·</span> Дзержинский район</p>
+        <h1 id="hero-title">
+          <span>Ремонт и обслуживание</span>
+          <span class="hero-title-display">автомобилей</span>
+          <span>в Волгограде</span>
+        </h1>
+        <p class="hero-lede">От диагностики и ходовой до кузовного ремонта. Выберите ситуацию — подставим её в заявку.</p>
+
+        <ul class="hero-facts" aria-label="Время работы и опыт">
+          <li>ежедневно 8:00–20:00</li>
+          <li>работаем с июня 2009 года</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#booking" data-booking-link>
+            <span>Записаться через помощника</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+
+          <div class="chat-widget" id="chat-widget">
+            <section class="chat-panel" id="chat-panel" role="dialog" aria-labelledby="chat-title" aria-describedby="chat-subtitle" hidden>
+              <header class="chat-head">
+                <div>
+                  <h2 class="chat-title" id="chat-title">Онлайн-помощник АБС</h2>
+                  <p class="chat-subtitle" id="chat-subtitle">Отвечает онлайн-помощник, сложные вопросы передаёт мастеру</p>
+                </div>
+                <button class="chat-close" type="button" id="chat-close" aria-label="Закрыть чат">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+              </header>
+              <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Сообщения чата"></div>
+              <div class="chat-ask-phone" id="chat-ask-phone" hidden>
+                <button class="chat-ask-phone-btn" type="button" id="chat-ask-phone-btn">Оставить телефон для звонка</button>
+              </div>
+              <form class="chat-form" id="chat-form" novalidate>
+                <label class="visually-hidden" for="chat-input">Сообщение онлайн-помощнику</label>
+                <textarea class="chat-input" id="chat-input" name="message" rows="1" maxlength="1000" placeholder="Напишите сообщение…" enterkeyhint="send" aria-describedby="chat-consent"></textarea>
+                <button class="chat-send" type="submit" id="chat-send">Отправить</button>
+              </form>
+              <p class="chat-consent" id="chat-consent">Отправляя сообщение, вы соглашаетесь на обработку персональных данных.</p>
+            </section>
+            <button class="question-link" type="button" id="chat-toggle" aria-expanded="false" aria-controls="chat-panel">Сначала задать вопрос</button>
+          </div>
+        </div>
+        <p class="hero-call">Без формы и мессенджера: <a href="tel:+79370854888" data-phone-click="hero">позвонить в сервис</a></p>
+      </div>
+
+      <figure class="hero-media">
+        <picture>
+          <source type="image/avif" srcset="assets/img/abs-facade-768.avif 768w, assets/img/abs-facade-1200.avif 1200w, assets/img/abs-facade-1524.avif 1524w" sizes="(max-width: 960px) calc(100vw - 32px), 42vw">
+          <source type="image/webp" srcset="assets/img/abs-facade-768.webp 768w, assets/img/abs-facade-1200.webp 1200w, assets/img/abs-facade-1524.webp 1524w" sizes="(max-width: 960px) calc(100vw - 32px), 42vw">
+          <img src="assets/img/abs-facade-1200.webp" width="1524" height="1032" alt="Фасад АБС-Автосервиса и открытый ремонтный бокс" fetchpriority="high" decoding="async">
+        </picture>
+        <figcaption>
+          <span>Свой сервис в Дзержинском районе</span>
+          <strong>ул. Полоненко, 15Б</strong>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="situations" id="situations" aria-labelledby="situations-title">
+      <div class="container situations-grid">
+        <div class="situations-intro">
+          <h2 id="situations-title">Что нужно сделать?</h2>
+          <p>Выберите ситуацию своими словами. Мы подставим услугу в заявку — повторно описывать её не придётся.</p>
+
+          <div class="route-selection" id="route-selection" hidden aria-live="polite">
+            <span class="route-label">Ваш выбор</span>
+            <strong id="route-selection-text"></strong>
+            <button class="route-change" type="button" id="route-clear">Изменить</button>
+          </div>
+          <a class="button button-primary route-continue" href="#booking" id="route-continue" hidden data-booking-link>
+            <span>Записаться через помощника</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="situation-list" role="group" aria-label="Выберите ситуацию">
+          <button class="situation-option" type="button" data-code="diagnostics_suspension" data-service="Диагностика и ремонт ходовой" aria-pressed="false">
+            <span class="situation-text"><strong>Диагностика и ходовая</strong><span>Стук, люфт, ошибка на панели</span></span>
+            <span class="situation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="situation-option" type="button" data-code="maintenance_brakes" data-service="Техобслуживание и ремонт тормозов" aria-pressed="false">
+            <span class="situation-text"><strong>ТО и тормоза</strong><span>Масло, фильтры, колодки, диски</span></span>
+            <span class="situation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="situation-option" type="button" data-code="wheels_alignment" data-service="Шиномонтаж и 3D сход-развал" aria-pressed="false">
+            <span class="situation-text"><strong>Шиномонтаж и сход-развал</strong><span>Сезонная смена, увод в сторону</span></span>
+            <span class="situation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="situation-option" type="button" data-code="air_conditioning" data-service="Ремонт кондиционера" aria-pressed="false">
+            <span class="situation-text"><strong>Кондиционер</strong><span>Не холодит, запах, утечка</span></span>
+            <span class="situation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="situation-option" type="button" data-code="body_repair" data-service="Кузовной ремонт" aria-pressed="false">
+            <span class="situation-text"><strong>Кузовной ремонт</strong><span>ДТП, вмятина, покраска</span></span>
+            <span class="situation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="situation-option" type="button" data-code="paintless_dent" data-service="Удаление вмятин без покраски" aria-pressed="false">
+            <span class="situation-text"><strong>Удаление вмятин без покраски</strong><span>Град, парковка, дверь</span></span>
+            <span class="situation-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-label="АБС-Автосервис в цифрах">
+      <div class="container">
+        <ul class="proof-list">
+          <li class="proof-item">
+            <p class="proof-value">4,8</p>
+            <p class="proof-label">рейтинг на Яндекс Картах: 503 оценки, 249 отзывов</p>
+            <a class="proof-link" href="https://yandex.ru/maps/org/abs_avtoservis/1309863484/reviews/" target="_blank" rel="noopener">Смотреть отзывы<span aria-hidden="true"> ↗</span></a>
+          </li>
+          <li class="proof-item">
+            <p class="proof-value">17 лет</p>
+            <p class="proof-label">работаем в Дзержинском районе с июня 2009 года</p>
+          </li>
+          <li class="proof-item">
+            <p class="proof-value">8–20</p>
+            <p class="proof-label">ежедневно, без выходных — с восьми утра</p>
+          </li>
+          <li class="proof-item">
+            <p class="proof-value">Два цеха</p>
+            <p class="proof-label">слесарный и кузовной под одной крышей, на Полоненко, 15Б</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="booking" id="booking" aria-labelledby="booking-title">
+      <div class="container booking-grid">
+        <div class="booking-copy">
+          <p class="booking-kicker">Заявка → диалог → подтверждение</p>
+          <h2 id="booking-title">Начнём с главного</h2>
+          <p>Оставьте телефон и выберите услугу. Автомобиль и желаемое время можно уточнить в диалоге — обязательная анкета не нужна.</p>
+          <p class="booking-note">После принятия заявки покажем доступный мессенджер. Точное время записи подтвердит приёмщик.</p>
+          <a class="booking-phone" href="tel:+79370854888" data-phone-click="booking">Или позвоните: <strong>8-937-085-48-88</strong></a>
+        </div>
+
+        <div class="booking-surface">
+          <form id="lead-form" class="lead-form" novalidate>
+            <div class="field">
+              <label for="service">Услуга или ситуация</label>
+              <input id="service" name="service" type="text" maxlength="120" autocomplete="off" placeholder="Например, стук в подвеске" required aria-describedby="service-error">
+              <span class="field-hint">Можно описать своими словами, если нужной ситуации нет в списке.</span>
+              <span class="field-error" id="service-error" hidden></span>
+            </div>
+
+            <div class="field">
+              <label for="phone">Телефон <span aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00" required aria-describedby="phone-hint phone-error">
+              <span class="field-hint" id="phone-hint">Российский номер в любом формате.</span>
+              <span class="field-error" id="phone-error" hidden></span>
+            </div>
+
+            <details class="optional-details">
+              <summary>Добавить автомобиль и желаемое время <span aria-hidden="true">+</span></summary>
+              <div class="optional-fields">
+                <div class="field">
+                  <label for="car">Автомобиль</label>
+                  <input id="car" name="car" type="text" maxlength="120" placeholder="Марка, модель, год" aria-describedby="car-error">
+                  <span class="field-error" id="car-error" hidden></span>
+                </div>
+                <div class="field">
+                  <label for="wish-time">Когда удобно</label>
+                  <input id="wish-time" name="wish_time" type="text" maxlength="80" placeholder="Например, завтра после 17:00" aria-describedby="wish-time-hint wish-time-error">
+                  <span class="field-hint" id="wish-time-hint">Точное время подтвердит приёмщик.</span>
+                  <span class="field-error" id="wish-time-error" hidden></span>
+                </div>
+                <div class="field">
+                  <label for="name">Имя <span class="optional-label">необязательно</span></label>
+                  <input id="name" name="name" type="text" maxlength="80" autocomplete="name" aria-describedby="name-error">
+                  <span class="field-error" id="name-error" hidden></span>
+                </div>
+              </div>
+            </details>
+
+            <div class="consent-field">
+              <label class="checkbox-label">
+                <input id="consent-pd" name="consent_pd" type="checkbox" required aria-describedby="consent-pd-error">
+                <span>Согласен на обработку персональных данных</span>
+              </label>
+              <span class="field-error" id="consent-pd-error" hidden></span>
+            </div>
+
+            <div class="hp-field" aria-hidden="true">
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            </div>
+
+            <button class="button button-primary submit-button" id="submit-button" type="submit">
+              <span>Отправить заявку</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <section class="lead-success" id="lead-success" hidden tabindex="-1" aria-labelledby="success-title">
+            <span class="success-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+            <h3 id="success-title">Заявка принята</h3>
+            <p id="success-message"></p>
+            <p class="success-lead-no" id="success-lead-no" hidden></p>
+            <div class="messenger-block" id="messenger-block" hidden>
+              <p>Услуга и уже заполненные данные будут переданы помощнику.</p>
+              <div class="messenger-actions" id="messenger-actions"></div>
+            </div>
+            <p class="success-fallback">Если мессенджер недоступен, позвоните: <a href="tel:+79370854888" data-phone-click="success">8-937-085-48-88</a>.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+    <section class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="process-head">
+          <p class="section-kicker">Порядок работы</p>
+          <h2 id="process-title">Как проходит ремонт</h2>
+          <p class="process-lead">Четыре шага, на каждом из которых вы понимаете, что происходит с машиной и сколько это стоит.</p>
+        </div>
+        <ol class="process-grid">
+          <li class="process-step">
+            <span class="process-num" aria-hidden="true">01</span>
+            <h3>Заявка</h3>
+            <p>Телефон и услуга — этого хватит. Фото повреждений можно прислать сразу в WhatsApp или Viber.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num" aria-hidden="true">02</span>
+            <h3>Подтверждение</h3>
+            <p>Приёмщик звонит, уточняет автомобиль и предлагает время. Запись подтверждена, когда время согласовано с человеком.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num" aria-hidden="true">03</span>
+            <h3>Осмотр и согласование</h3>
+            <p>Называем объём и сумму до начала работ. Дополнительные работы — только после вашего согласия.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num" aria-hidden="true">04</span>
+            <h3>Работа и выдача</h3>
+            <p>Ремонт, заказ-наряд и гарантия по договору. Если что-то пошло не так — сначала звонок приёмщику, а не отзыв.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="prices" id="prices" aria-labelledby="prices-title">
+      <div class="container prices-grid">
+        <div class="prices-intro">
+          <p class="section-kicker">Услуги и цены</p>
+          <h2 id="prices-title">Сколько стоит — до начала работ</h2>
+          <p class="prices-draft">Ориентировочные цены · прайс на согласовании</p>
+          <p class="prices-lead">47 позиций из прайса сервиса: техобслуживание, ходовая, тормоза, диагностика, шиномонтаж, сход-развал, кондиционер, кузов.</p>
+          <p class="prices-note">Все цены — «от». Итог зависит от модели, состояния автомобиля и запчастей; объём и сумму согласуем до начала ремонта, а не после.</p>
+          <a class="button button-secondary prices-cta" href="#booking" data-booking-link>Узнать цену по своей задаче</a>
+        </div>
+
+        <div class="price-groups">
+          <details class="price-group" open>
+            <summary>
+              <span class="price-group-name">Техобслуживание</span>
+              <span class="price-group-count">12 позиций</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Замена масла в ДВС</span><span class="price-value">от 1 200 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена масла в МКПП</span><span class="price-value">от 800 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена масла в АКПП</span><span class="price-value">от 1 400 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена охлаждающей жидкости</span><span class="price-value">от 1 400 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена масла ГУР</span><span class="price-value">от 1 400 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена воздушного фильтра</span><span class="price-value">от 400 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена салонного фильтра</span><span class="price-value">от 400 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена топливного фильтра, выносной</span><span class="price-value">от 600 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена топливного фильтра в баке</span><span class="price-value">от 2 500 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена фильтра АКПП, со снятием поддона</span><span class="price-value">от 3 600 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена свечей зажигания, комплект</span><span class="price-value">от 1 400 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена ремня ГРМ</span><span class="price-value">от 5 500 ₽</span></p>
+            </div>
+          </details>
+
+          <details class="price-group" open>
+            <summary>
+              <span class="price-group-name">Ходовая и тормоза</span>
+              <span class="price-group-count">10 позиций</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Замена стойки стабилизатора</span><span class="price-value">от 800 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена втулок стабилизатора</span><span class="price-value">от 1 600 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена переднего амортизатора</span><span class="price-value">от 2 200 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена заднего амортизатора</span><span class="price-value">от 1 200 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена тормозных колодок</span><span class="price-value">от 1 200 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена задних колодок, барабан</span><span class="price-value">от 2 600 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена тормозного диска</span><span class="price-value">от 1 200 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена сцепления</span><span class="price-value">от 7 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Проточка тормозного диска, со снятием</span><span class="price-value">от 2 500 ₽</span></p>
+              <p class="price-row"><span class="price-name">Проточка тормозного диска, без снятия</span><span class="price-value">от 2 500 ₽</span></p>
+            </div>
+          </details>
+
+          <details class="price-group">
+            <summary>
+              <span class="price-group-name">Диагностика</span>
+              <span class="price-group-count">4 позиции</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Диагностика подвески</span><span class="price-value">от 600 ₽</span></p>
+              <p class="price-row"><span class="price-name">Сканирование ошибок</span><span class="price-value">от 1 200 ₽</span></p>
+              <p class="price-row"><span class="price-name">Проверка дефектов кузова</span><span class="price-value">от 600 ₽</span></p>
+              <p class="price-row"><span class="price-name">Проверка перед покупкой</span><span class="price-value">от 2 600 ₽</span></p>
+            </div>
+          </details>
+
+          <details class="price-group">
+            <summary>
+              <span class="price-group-name">Шиномонтаж и сход-развал</span>
+              <span class="price-group-count">6 позиций</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Комплект «Шиномонтаж»<span>снятие и установка колеса, демонтаж и монтаж шины, балансировка</span></span><span class="price-value">от 2 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Стендовая балансировка колеса</span><span class="price-value">от 200 ₽</span></p>
+              <p class="price-row"><span class="price-name">Установка латки на снятом колесе</span><span class="price-value">от 300 ₽</span></p>
+              <p class="price-row"><span class="price-name">Ремонт бокового пореза</span><span class="price-value">от 2 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">3D сход-развал, одна ось, седан</span><span class="price-value">от 1 800 ₽</span></p>
+              <p class="price-row"><span class="price-name">3D сход-развал, две оси, седан</span><span class="price-value">от 2 200 ₽</span></p>
+            </div>
+          </details>
+
+          <details class="price-group">
+            <summary>
+              <span class="price-group-name">Кондиционер</span>
+              <span class="price-group-count">4 позиции</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Заправка кондиционера<span>плюс стоимость фреона</span></span><span class="price-value">от 2 500 ₽</span></p>
+              <p class="price-row"><span class="price-name">Снять и установить компрессор</span><span class="price-value">от 3 500 ₽</span></p>
+              <p class="price-row"><span class="price-name">Замена подшипника шкива компрессора</span><span class="price-value">от 3 500 ₽</span></p>
+              <p class="price-row"><span class="price-name">Снять и установить радиатор охлаждения</span><span class="price-value">от 4 500 ₽</span></p>
+            </div>
+          </details>
+
+          <details class="price-group">
+            <summary>
+              <span class="price-group-name">Кузовной ремонт</span>
+              <span class="price-group-count">7 позиций</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Ремонт и покраска крыла</span><span class="price-value">от 16 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Ремонт и покраска двери</span><span class="price-value">от 20 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Ремонт и покраска порога</span><span class="price-value">от 18 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Покраска бампера с установкой</span><span class="price-value">от 16 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Ремонт и покраска капота</span><span class="price-value">от 20 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Ремонт и покраска крыши</span><span class="price-value">от 26 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Ремонт и покраска крышки багажника</span><span class="price-value">от 18 000 ₽</span></p>
+            </div>
+          </details>
+
+          <details class="price-group">
+            <summary>
+              <span class="price-group-name">Вмятины без покраски</span>
+              <span class="price-group-count">3 позиции</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Вмятина до 3 см<span>без учёта демонтажа деталей</span></span><span class="price-value">от 2 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Вмятина до 5 см<span>без учёта демонтажа деталей</span></span><span class="price-value">от 4 000 ₽</span></p>
+              <p class="price-row"><span class="price-name">Вмятина до 8 см<span>без учёта демонтажа деталей</span></span><span class="price-value">от 6 000 ₽</span></p>
+            </div>
+          </details>
+
+          <details class="price-group">
+            <summary>
+              <span class="price-group-name">Прочее</span>
+              <span class="price-group-count">1 позиция</span>
+              <span class="price-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="price-rows">
+              <p class="price-row"><span class="price-name">Нормочас работ</span><span class="price-value">от 1 000 ₽</span></p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="bodywork" id="body" aria-labelledby="body-title">
+      <div class="container bodywork-grid">
+        <div class="bodywork-copy">
+          <p class="section-kicker">Кузовной цех</p>
+          <h2 id="body-title">Кузовной ремонт — отдельный цех, а не «между делом»</h2>
+          <p>Кузовной ремонт — основное направление сервиса с 2009 года. Ремонт и покраска идут по договору, с гарантией в установленные сроки; условия фиксируются в заказ-наряде.</p>
+          <p class="bodywork-note">Кузовной цех работает по своему графику — пн–пт 9:00–18:00. Слесарный цех принимает ежедневно 8:00–20:00.</p>
+          <div class="bodywork-actions">
+            <a class="button button-primary" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D1%86%D0%B5%D0%BD%D0%BA%D1%83%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B3%D0%BE%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%20%D0%BF%D0%BE%20%D1%84%D0%BE%D1%82%D0%BE" target="_blank" rel="noopener">
+              <span>Прислать фото в WhatsApp</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="bodywork-phone" href="tel:+79370854888" data-phone-click="body">Или позвонить: 8-937-085-48-88</a>
+          </div>
+        </div>
+
+        <ul class="bodywork-list">
+          <li>
+            <span class="bodywork-name">Ремонт и покраска</span>
+            <span class="bodywork-detail">Крыло, дверь, порог, капот, крыша, крышка багажника</span>
+            <span class="bodywork-price">от 16 000 ₽</span>
+          </li>
+          <li>
+            <span class="bodywork-name">Удаление вмятин без покраски</span>
+            <span class="bodywork-detail">Вмятина до 3, 5 или 8 см, заводское ЛКП остаётся</span>
+            <span class="bodywork-price">от 2 000 ₽</span>
+          </li>
+          <li>
+            <span class="bodywork-name">Покраска бампера</span>
+            <span class="bodywork-detail">С установкой и снятием детали</span>
+            <span class="bodywork-price">от 16 000 ₽</span>
+          </li>
+          <li>
+            <span class="bodywork-name">Оценка по фото</span>
+            <span class="bodywork-detail">Вилку называем до осмотра — по снимкам повреждений</span>
+            <span class="bodywork-price">предварительно</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="reviews-head">
+          <div>
+            <p class="section-kicker">Отзывы</p>
+            <h2 id="reviews-title">4,8 из 5 — по 503 оценкам на Яндекс Картах</h2>
+            <p class="reviews-meta">249 отзывов на 16 ноября 2026 года. Цитаты ниже — дословно из отзывов, с сохранением смысла.</p>
+          </div>
+          <a class="button button-secondary" href="https://yandex.ru/maps/org/abs_avtoservis/1309863484/reviews/" target="_blank" rel="noopener">Читать все отзывы<span aria-hidden="true"> ↗</span></a>
+        </div>
+
+        <div class="reviews-grid">
+          <figure class="review-card">
+            <blockquote><p>«Все на высоте. Персонал — профессионалы. Успехов вашему сервису!»</p></blockquote>
+            <figcaption>Отзыв на Яндекс Картах</figcaption>
+          </figure>
+          <figure class="review-card">
+            <blockquote><p>«На запчасти не делают никакую накрутку, заказывают прямо из каталогов.»</p></blockquote>
+            <figcaption>Отзыв на Яндекс Картах</figcaption>
+          </figure>
+          <figure class="review-card">
+            <blockquote><p>«Объясняют причинно-следственную связь выхода из строя узлов.»</p></blockquote>
+            <figcaption>Отзыв на Яндекс Картах</figcaption>
+          </figure>
+          <figure class="review-card">
+            <blockquote><p>«Работа была выполнена быстро и качественно.»</p></blockquote>
+            <figcaption>Отзыв на Яндекс Картах</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div class="faq-intro">
+          <p class="section-kicker">Вопросы</p>
+          <h2 id="faq-title">Что спрашивают до записи</h2>
+          <p>Собрали то, о чём клиенты спрашивают чаще всего. Если ответа нет — позвоните, приёмщик ответит без скриптов.</p>
+          <a class="faq-phone" href="tel:+79370854888" data-phone-click="faq">8-937-085-48-88</a>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Где вы находитесь и как доехать?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Волгоград, Дзержинский район, ул. Полоненко, 15Б — пос. Ангарский, 400081. Ориентир — ул. Раздольная, около 360 м. <a href="https://yandex.ru/maps/org/abs_avtoservis/1309863484/" target="_blank" rel="noopener">Построить маршрут в Яндекс Картах</a>.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Когда вы работаете?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Слесарный цех — ежедневно с 8:00 до 20:00, без выходных. Кузовной цех — по будням с 9:00 до 18:00. В праздники график уточняйте по телефону.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как записаться и нужно ли это заранее?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Три способа: форма на этой странице, звонок на 8-937-085-48-88, сообщение в WhatsApp или Viber. Записаться лучше заранее — приёмщик подтвердит время и подскажет, какие запчасти взять с собой или заказать.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Сколько будет стоить мой ремонт?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Смотрите <a href="#prices">прайс выше</a>: там 47 позиций с ценами «от». Точную сумму назовём после осмотра — она зависит от модели, состояния деталей и запчастей. Объём работ согласуем до начала, чтобы сумма не выросла по ходу.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Есть ли гарантия и документы?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Работы идут по договору, после ремонта выдают заказ-наряд. На кузовной ремонт действует гарантия в установленные договором сроки; конкретные условия по вашей работе подтвердит приёмщик до начала ремонта.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли оценить ремонт по фотографии?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Да. Пришлите снимки повреждений в WhatsApp или Viber на 8-937-085-48-88 — назовём вилку по кузовным работам до приезда. Точную сумму всё равно определит осмотр.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как можно оплатить?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Картой, наличными, по QR-коду и через банк. С компаниями работаем по счёту — присылайте заявку с реквизитами.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Какие марки обслуживаете?<span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+            <div class="faq-answer">
+              <p>Отечественные, корейские, японские, европейские и китайские легковые, а также коммерческий транспорт. Если сомневаетесь по своей модели — позвоните, уточним за минуту.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts" id="contacts" aria-labelledby="contacts-title">
+      <div class="container contacts-grid">
+        <div class="contacts-info">
+          <p class="section-kicker">Контакты</p>
+          <h2 id="contacts-title">Полоненко, 15Б</h2>
+          <p class="contacts-lead">Дзержинский район, пос. Ангарский. Свой сервис с 2009 года: два цеха, подъёмники и сход-развал на месте. Приезжайте или напишите — приёмщик ответит в рабочее время.</p>
+
+          <dl class="contact-list">
+            <div>
+              <dt>Адрес</dt>
+              <dd>Волгоград, ул. Полоненко, 15Б<span>Дзержинский район, пос. Ангарский, 400081</span></dd>
+            </div>
+            <div>
+              <dt>Часы работы</dt>
+              <dd>Ежедневно 8:00–20:00<span>Кузовной цех — пн–пт 9:00–18:00</span></dd>
+            </div>
+            <div>
+              <dt>Телефон</dt>
+              <dd><a href="tel:+79370854888" data-phone-click="contacts">8-937-085-48-88</a><span>WhatsApp и Viber на этом же номере</span></dd>
+            </div>
+            <div>
+              <dt>Оплата</dt>
+              <dd>Картой, наличными, по QR-коду<span>Компаниям — счёт и безналичный расчёт</span></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="contacts-card">
+          <p class="contacts-card-kicker">Запись без звонка</p>
+          <p class="contacts-card-text">Оставьте телефон — приёмщик перезвонит, уточнит машину и предложит время. Точное время подтверждает человек, а не автоответчик.</p>
+          <a class="button button-primary" href="#booking" data-booking-link>Записаться через помощника</a>
+          <a class="contacts-card-route" href="https://yandex.ru/maps/org/abs_avtoservis/1309863484/" target="_blank" rel="noopener">Открыть маршрут<span aria-hidden="true"> ↗</span></a>
+          <p class="contacts-card-hours">Ежедневно 8:00–20:00, без выходных</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>АБС-Автосервис</strong><br>Волгоград, ул. Полоненко, 15Б</p>
+      <a href="https://yandex.ru/maps/org/abs_avtoservis/1309863484/" target="_blank" rel="noopener">Построить маршрут <span aria-hidden="true">↗</span></a>
+      <p class="prototype-label">Черновик · цены и условия на согласовании с сервисом</p>
+    </div>
+  </footer>
+
+  <nav class="mobile-actions" aria-label="Быстрые действия">
+    <a class="button button-primary" href="#booking" data-booking-link>Записаться</a>
+    <a class="button button-secondary" href="tel:+79370854888" data-phone-click="mobile">Позвонить</a>
+  </nav>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

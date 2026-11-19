@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Onest";
+  src: url("../assets/fonts/onest-full-var.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  src: url("../assets/fonts/unbounded-hero-var.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+
+  --color-bg: #f2f4f7;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #eef1f6;
+  --color-ink: #121b28;
+  --color-muted: #55616f;
+  --color-navy: #0b2f5f;
+  --color-night: #07203f;
+  --color-accent: #bf1a21;
+  --color-accent-text: #a5141b;
+  --color-accent-soft: #f9e8e9;
+  --color-line: #dde3ec;
+  --color-on-dark: #f5f8fd;
+  --color-on-dark-muted: #bfd0e5;
+  --color-error: #a5141b;
+  --color-success: #1c6b42;
+
+  --font-text: "Onest", "Segoe UI", Arial, sans-serif;
+  --font-display: "Unbounded", "Onest", "Segoe UI", Arial, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  --text-lead: clamp(1.125rem, 1.02rem + 0.45vw, 1.375rem);
+  --text-h2: clamp(2.25rem, 1.55rem + 2.8vw, 4rem);
+  --text-section: clamp(2rem, 1.45rem + 2.2vw, 3.25rem);
+  --text-hero: clamp(2.55rem, 1.55rem + 3.35vw, 3.75rem);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+
+  --radius-sm: 0.75rem;
+  --radius-lg: 1.5rem;
+  --shadow-overlay: 0 1.5rem 5rem rgb(7 32 63 / 0.22);
+
+  --duration-fast: 140ms;
+  --duration-state: 240ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --container: 86rem;
+  --gutter: clamp(1rem, 4vw, 4rem);
+  --header-height: 5.5rem;
+}
