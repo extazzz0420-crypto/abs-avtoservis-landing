@@ -1,6 +1,9 @@
+/* АБС-Автосервис — единственный источник токенов.
+   Ни один цвет, кегль, отступ или кривая движения не задаётся мимо этого файла. */
+
 @font-face {
   font-family: "Onest";
-  src: url("../assets/fonts/onest-full-var.woff2") format("woff2");
+  src: url("../assets/fonts/onest-site-var.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -8,7 +11,7 @@
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../assets/fonts/unbounded-hero-var.woff2") format("woff2");
+  src: url("../assets/fonts/unbounded-site-var.woff2") format("woff2");
   font-style: normal;
   font-weight: 200 900;
   font-display: swap;
@@ -17,49 +20,63 @@
 :root {
   color-scheme: light;
 
-  --color-bg: #f2f4f7;
-  --color-surface: #ffffff;
-  --color-surface-subtle: #eef1f6;
-  --color-ink: #121b28;
-  --color-muted: #55616f;
-  --color-navy: #0b2f5f;
-  --color-night: #07203f;
-  --color-accent: #bf1a21;
-  --color-accent-text: #a5141b;
-  --color-accent-soft: #f9e8e9;
-  --color-line: #dde3ec;
-  --color-on-dark: #f5f8fd;
-  --color-on-dark-muted: #bfd0e5;
-  --color-error: #a5141b;
-  --color-success: #1c6b42;
+  /* Палитра: фарфор, чернила, глубокий синий, алый маркер. */
+  --porcelain: #f2f4f7;
+  --paper: #ffffff;
+  --ink: #121b28;
+  --muted: #55616f;
+  --navy: #0b2f5f;
+  --night: #07203f;
+  --scarlet: #bf1a21;
+  --scarlet-ink: #a5141b;
+  --scarlet-soft: #f9e8e9;
+  --line: #dde3ec;
+  --line-strong: #c7d1e0;
+  --line-control: #7f8c9d;
+  --tint: #e9edf4;
+  --on-dark: #f4f7fb;
+  --on-dark-muted: #a9bad1;
+  --line-dark: rgb(255 255 255 / 0.14);
+  --ok: #1c6b42;
+  --error: #a5141b;
 
+  /* Типографика. Unbounded — монументальные акценты, Onest — текст и заголовки. */
   --font-text: "Onest", "Segoe UI", Arial, sans-serif;
   --font-display: "Unbounded", "Onest", "Segoe UI", Arial, sans-serif;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
-  --text-lead: clamp(1.125rem, 1.02rem + 0.45vw, 1.375rem);
-  --text-h2: clamp(2.25rem, 1.55rem + 2.8vw, 4rem);
-  --text-section: clamp(2rem, 1.45rem + 2.2vw, 3.25rem);
-  --text-hero: clamp(2.55rem, 1.55rem + 3.35vw, 3.75rem);
+  --fs-label: 0.6875rem;   /* 11 */
+  --fs-small: 0.8125rem;   /* 13 */
+  --fs-body: 1rem;         /* 16 */
+  --fs-lead: clamp(1.0625rem, 0.98rem + 0.42vw, 1.3125rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --fs-h2: clamp(2rem, 1.35rem + 3.1vw, 3.75rem);
+  --fs-h1: clamp(2.3rem, 0.4rem + 6.1vw, 6.4rem);
+  --fs-mega: clamp(3.25rem, 1.2rem + 8.5vw, 8rem);
 
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2.5rem;
-  --space-5: 4rem;
-  --space-6: 6rem;
+  /* Сетка 8pt: шесть шагов, дальше — только section-y. */
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2.5rem;
+  --sp-5: 4rem;
+  --sp-6: 6rem;
+  --section-y: clamp(4.5rem, 9vw, 10rem);
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --container: 90rem;
 
-  --radius-sm: 0.75rem;
-  --radius-lg: 1.5rem;
-  --shadow-overlay: 0 1.5rem 5rem rgb(7 32 63 / 0.22);
+  /* Два радиуса: техничный угол и пилюля для чипов. */
+  --r-1: 2px;
+  --r-2: 999px;
 
-  --duration-fast: 140ms;
-  --duration-state: 240ms;
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  /* Тень только у плавающих слоёв. */
+  --shadow-float: 0 1.5rem 4rem rgb(7 32 63 / 0.18);
 
-  --container: 86rem;
-  --gutter: clamp(1rem, 4vw, 4rem);
-  --header-height: 5.5rem;
+  /* Движение: одна кривая характера + медленная для крупных сцен. */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-line: cubic-bezier(0.87, 0, 0.13, 1);
+  --t-fast: 180ms;
+  --t-state: 320ms;
+  --t-slow: 760ms;
+
+  --header-h: 4.75rem;
 }

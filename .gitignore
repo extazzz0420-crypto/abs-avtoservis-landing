@@ -2,3 +2,5 @@ qa/
 design/
 *.zip
 .DS_Store
+.hermes.md
+assets/docs/
