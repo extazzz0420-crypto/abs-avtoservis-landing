@@ -528,7 +528,9 @@ button:disabled { cursor: progress; opacity: 0.62; }
 
 .hero__facts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* Три факта, а не четыре: срок гарантии снят до подтверждения владельцем.
+     Колонок ровно по числу пунктов, иначе на месте снятого остаётся дыра. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: clamp(2.5rem, 6vw, 4.5rem);
   border-top: 1px solid var(--line-dark);
 }
@@ -1353,6 +1355,8 @@ button:disabled { cursor: progress; opacity: 0.62; }
   .hero__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fact:nth-child(2) { border-right: 0; }
   .fact:nth-child(n + 3) { border-top: 1px solid var(--line-dark); }
+  /* Фактов три: последний занимает обе колонки, иначе линия раздела обрывается на середине. */
+  .fact:nth-child(3) { grid-column: 1 / -1; }
   .booking__grid,
   .prices__grid,
   .bodywork__grid,
