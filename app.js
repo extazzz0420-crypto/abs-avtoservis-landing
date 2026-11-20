@@ -681,7 +681,7 @@
     if (!total) {
       priceList.append(priceEmpty);
       priceEmpty.hidden = false;
-      priceEmpty.textContent = 'Прайс временно недоступен. Позвоните: 8-937-085-48-88 — назовём цену по вашей работе.';
+      priceEmpty.textContent = 'Прайс обновляется. Точную цену по вашей задаче назовём по телефону: 8-937-085-48-88.';
       if (priceCount) priceCount.textContent = '0 позиций';
       return;
     }
@@ -790,7 +790,7 @@
       if (priceList) {
         priceList.replaceChildren(priceEmpty);
         priceEmpty.hidden = false;
-        priceEmpty.textContent = 'Прайс временно недоступен. Позвоните: 8-937-085-48-88 — назовём цену по вашей работе.';
+        priceEmpty.textContent = 'Прайс обновляется. Точную цену по вашей задаче назовём по телефону: 8-937-085-48-88.';
       }
       if (priceCount) priceCount.textContent = 'Прайс недоступен';
       return;
