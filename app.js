@@ -718,10 +718,6 @@
 
     const draft = $('prices-draft');
     if (draft) draft.hidden = data.draft !== true;
-    // Подпись в футере говорит то же, что бейдж у прайса: пока цены подтверждены сервисом,
-    // слово «черновик» на странице остаётся ложью в самом заметном для недоверия месте.
-    const footerDraft = $('footer-draft');
-    if (footerDraft) footerDraft.hidden = data.draft !== true;
   }
 
   function buildFilters(categories) {
