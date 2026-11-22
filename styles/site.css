@@ -1169,6 +1169,20 @@ button { background: none; border: 0; cursor: pointer; }
   font-size: var(--fs-3);
   color: var(--on-deep);
 }
+.bodywork__more {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule-deep);
+  font-size: var(--fs-3);
+}
+.bodywork__more .text-link {
+  color: var(--on-deep);
+  text-decoration-color: var(--rule-deep);
+}
+.bodywork__more .text-link:hover {
+  color: var(--accent-soft);
+  text-decoration-color: currentColor;
+}
 .bodywork__side { display: grid; gap: 1.5rem; }
 
 .ba__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
