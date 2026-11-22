@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Кузовной ремонт после ДТП — вилка по фото, Волгоград</title>
 <meta name="description" content="Свой кузовной цех с 2009 года, Полоненко, 15Б. Пришлите 3–4 фото — назовём диапазон цен до поездки. Ремонт и покраска, вмятины без покраски. Пн–пт 9:00–18:00.">
-<meta name="theme-color" content="#07203f">
+<meta name="theme-color" content="#f5f3ee">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Кузовной ремонт: назовём вилку по фото">
 <meta property="og:description" content="Свой цех с 2009 года. Пришлите 3–4 фото — скажем диапазон до поездки.">
@@ -22,162 +22,15 @@
 <link rel="stylesheet" href="/styles/tokens.css">
 <link rel="preload" href="/assets/fonts/unbounded-site-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/onest-site-var.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-  /* Страница-направление: кузовной ремонт. Одно действие — фото в WhatsApp.
-     Тексты: 03-copy/direction-kuzov.md, дословно. */
-  *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--font-text);font-size:var(--fs-body);line-height:1.55;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  img{max-width:100%;height:auto;display:block}
-  a{color:inherit}
-  .shell{width:100%;max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
-  .hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-  /* шапка */
-  .top{position:sticky;top:0;z-index:20;background:rgb(255 255 255 / .94);
-    backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .top__in{display:flex;align-items:center;gap:var(--sp-2);min-height:4rem}
-  .logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;font-family:var(--font-display);
-    font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:var(--fs-small)}
-  .logo b{display:grid;place-items:center;width:2rem;height:2rem;background:var(--scarlet);color:#fff;
-    border-radius:var(--r-1);font-size:.68rem;letter-spacing:.06em}
-  .top__phone{margin-left:auto;font-weight:600;font-size:var(--fs-small);text-decoration:none;
-    white-space:nowrap;font-variant-numeric:tabular-nums}
-  .top__phone:hover{color:var(--scarlet-ink)}
-
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;
-    padding:.85rem 1.15rem;border-radius:var(--r-1);border:1px solid transparent;
-    font-family:inherit;font-size:var(--fs-body);font-weight:600;text-align:center;
-    text-decoration:none;cursor:pointer;
-    transition:background var(--t-fast) var(--ease),color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease)}
-  .btn--main{background:var(--scarlet);color:#fff}
-  .btn--main:hover{background:var(--scarlet-ink)}
-  .btn--ghost{background:transparent;color:var(--ink);border-color:var(--line-control)}
-  .btn--ghost:hover{background:var(--tint)}
-  .btn--wa{background:#1f7a4d;color:#fff}
-  .btn--wa:hover{background:#186340}
-  .btn:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
-  .btn--sm{min-height:2.5rem;padding:.55rem .9rem;font-size:var(--fs-small)}
-  .top .btn{flex:none}
-
-  /* первый экран */
-  .hero{background:var(--night);color:var(--on-dark);padding-block:clamp(2.5rem,6vw,5rem) clamp(2rem,5vw,4rem)}
-  .hero__grid{display:grid;gap:clamp(1.5rem,4vw,3.5rem)}
-  .eyebrow{margin:0;font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;
-    color:var(--on-dark-muted);font-weight:600}
-  h1{margin:var(--sp-2) 0 0;font-family:var(--font-display);font-weight:400;
-    font-size:clamp(1.75rem,1rem + 3.4vw,3.5rem);line-height:1.06;letter-spacing:-.015em}
-  .hero__lead{margin:var(--sp-2) 0 0;max-width:38ch;color:var(--on-dark-muted);
-    font-size:var(--fs-lead);line-height:1.5}
-  .hero__cta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:var(--sp-3)}
-  .hero__cta .btn{flex:1 1 15rem}
-  .hero__note{margin:var(--sp-2) 0 0;max-width:44ch;color:var(--on-dark-muted);font-size:var(--fs-small)}
-  .hero__note a{color:var(--on-dark);white-space:nowrap;border-bottom:1px solid var(--line-dark);text-decoration:none}
-  .facts{display:flex;flex-wrap:wrap;gap:.35rem 1.25rem;margin:var(--sp-3) 0 0;padding:0;list-style:none;
-    color:var(--on-dark-muted);font-size:var(--fs-small)}
-  .facts li{display:flex;align-items:center;gap:.45rem}
-  .facts li::before{content:"";width:.35rem;height:.35rem;border-radius:50%;background:var(--scarlet);flex:none}
-
-  /* полоса фото */
-  .ba{padding-block:clamp(2rem,4vw,3.5rem) 0;background:var(--night)}
-  .ba__pair{display:grid;gap:.5rem}
-  .ba__item{position:relative;margin:0;overflow:hidden;border-radius:var(--r-1)}
-  .ba__tag{position:absolute;left:.5rem;bottom:.5rem;padding:.22rem .5rem;border-radius:var(--r-1);
-    background:rgb(7 32 63 / .88);color:var(--on-dark);font-size:var(--fs-label);
-    letter-spacing:.1em;text-transform:uppercase}
-  .ba__tag--ok{background:var(--ok)}
-  .ba figcaption{margin-top:.65rem;color:var(--on-dark-muted);font-size:var(--fs-small);max-width:56ch}
-  @media (min-width:44rem){.ba__pair{grid-template-columns:1fr 1fr}}
-
-  section{padding-block:clamp(2.5rem,6vw,4.5rem)}
-  h2{margin:0;font-family:var(--font-display);font-weight:400;
-    font-size:clamp(1.5rem,1rem + 1.8vw,2.35rem);line-height:1.15;letter-spacing:-.015em}
-  .lead{margin:var(--sp-2) 0 0;max-width:56ch;color:var(--muted);font-size:var(--fs-lead)}
-  .band{background:var(--porcelain)}
-
-  ol.steps{counter-reset:s;list-style:none;margin:var(--sp-3) 0 0;padding:0;display:grid;gap:1rem}
-  ol.steps li{counter-increment:s;display:grid;grid-template-columns:2rem 1fr;gap:.75rem;align-items:start}
-  ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--font-display);
-    font-size:var(--fs-small);font-weight:700;color:var(--scarlet);line-height:1.5}
-  ol.steps b{font-weight:600}
-  ol.steps small{display:block;color:var(--muted);font-size:var(--fs-small);line-height:1.45}
-
-  .prices{margin:var(--sp-3) 0 0;border-top:1px solid var(--line)}
-  .prices li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;
-    border-bottom:1px solid var(--line);font-size:var(--fs-body)}
-  .prices b{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
-  .stamp{display:inline-flex;align-items:center;gap:.4rem;margin-top:var(--sp-2);
-    padding:.35rem .6rem;border:1px solid var(--line-strong);border-radius:var(--r-1);
-    font-size:var(--fs-small);color:var(--muted)}
-  .stamp::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--scarlet)}
-
-  .trust{margin:var(--sp-3) 0 0;padding:0;list-style:none;display:grid;gap:.7rem;max-width:52ch}
-  .trust li{display:grid;grid-template-columns:1.1rem 1fr;gap:.6rem;font-size:var(--fs-body)}
-  .trust li::before{content:"—";color:var(--scarlet);font-weight:700}
-
-  .faq{margin:var(--sp-3) 0 0;border-top:1px solid var(--line-strong)}
-  .faq details{border-bottom:1px solid var(--line)}
-  .faq summary{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2);
-    min-height:3.25rem;padding:.85rem 0;cursor:pointer;list-style:none;font-weight:600;font-size:var(--fs-body)}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";flex:none;color:var(--navy);font-size:1.15rem;line-height:1;
-    transition:transform var(--t-state) var(--ease)}
-  .faq details[open] summary::after{transform:rotate(45deg)}
-  .faq p{margin:0;padding:0 0 1rem;max-width:62ch;color:var(--muted);font-size:var(--fs-small);line-height:1.55}
-
-  .box{margin-top:var(--sp-3);padding:var(--sp-3);background:var(--tint);
-    border-left:2px solid var(--navy);border-radius:var(--r-1)}
-  .box p{margin:0;font-size:var(--fs-body)}
-  .box p + p{margin-top:.5rem;color:var(--muted);font-size:var(--fs-small)}
-
-  .final{background:var(--night);color:var(--on-dark)}
-  .final h2{color:var(--on-dark)}
-  .final .lead{color:var(--on-dark-muted)}
-  .final__grid{display:grid;gap:var(--sp-3)}
-  .final__actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:var(--sp-3)}
-  .final__actions .btn{flex:1 1 15rem}
-  .contacts{margin:0;display:grid;gap:.9rem;font-size:var(--fs-small);color:var(--on-dark-muted)}
-  .contacts div{display:grid;gap:.2rem}
-  .contacts dt{font-size:var(--fs-label);letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-muted)}
-  .contacts dd{margin:0;color:var(--on-dark);font-size:var(--fs-body);font-weight:600}
-  .contacts dd span{display:block;color:var(--on-dark-muted);font-size:var(--fs-small);font-weight:400;margin-top:.15rem}
-  .contacts a{white-space:nowrap;text-decoration:none;border-bottom:1px solid var(--line-dark)}
-
-  footer{padding-block:var(--sp-3);border-top:1px solid var(--line)}
-
-  .bar{position:fixed;inset:auto 0 0;z-index:30;display:grid;grid-template-columns:1.4fr 1fr;gap:.5rem;
-    padding:.55rem var(--gutter) calc(.55rem + env(safe-area-inset-bottom));
-    background:rgb(255 255 255 / .95);border-top:1px solid var(--line);backdrop-filter:blur(12px)}
-  .bar .btn{min-height:2.9rem}
-  .bar[hidden]{display:none}
-  .draft{margin-top:var(--sp-3);font-size:var(--fs-label);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-
-  @media (min-width:56rem){
-    .hero__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:start}
-    .hero__cta .btn{flex:0 0 auto}
-    .final__grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
-    .bar{display:none}
-    body{padding-bottom:0}
-  }
-  @media (max-width:55.99rem){
-    body{padding-bottom:4.6rem}
-    .top .btn{display:none}
-  }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    *,*::before,*::after{transition-duration:.01ms !important;animation:none !important}
-  }
-</style>
+<link rel="stylesheet" href="/styles/kuzov.css?v=1">
 </head>
 <body>
 
 <header class="top">
   <div class="shell top__in">
-    <a class="logo" href="/"><b>АБС</b> Автосервис</a>
+    <a class="logo" href="/" aria-label="АБС-Автосервис — на главную"><img src="/assets/img/abs-logo-dark-240.webp" width="240" height="128" alt="АБС-Автосервис"></a>
     <a class="top__phone" href="tel:+79370854888" data-tel="header">8-937-085-48-88</a>
-    <a class="btn btn--main btn--sm" href="/#booking">Записаться</a>
+    <a class="btn btn--ghost btn--sm" href="/#booking">Записаться</a>
   </div>
 </header>
 
@@ -189,42 +42,38 @@
         <h1>Кузовной ремонт после ДТП в Волгограде</h1>
         <p class="hero__lead">Свой кузовной цех в Дзержинском районе с 2009 года. Ремонт и покраска, удаление вмятин без покраски. Вилку по стоимости называем по фото — до поездки в сервис.</p>
         <div class="hero__cta">
-          <a class="btn btn--wa" id="wa-hero" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82.%20%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B%D0%B2%D0%B0%D1%8E%20%D1%84%D0%BE%D1%82%D0%BE" target="_blank" rel="noopener" data-wa="hero">Прислать фото в WhatsApp</a>
-          <a class="btn btn--ghost" href="tel:+79370854888" style="color:var(--on-dark);border-color:var(--line-dark)" data-tel="hero">Позвонить</a>
+          <a class="btn" id="wa-hero" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82.%20%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B%D0%B2%D0%B0%D1%8E%20%D1%84%D0%BE%D1%82%D0%BE" target="_blank" rel="noopener" data-wa="hero">Прислать фото в WhatsApp</a>
+          <a class="btn btn--ghost" href="tel:+79370854888" data-tel="hero">Позвонить</a>
         </div>
         <p class="hero__note">Оценка по фото предварительная: точную сумму назовём после осмотра. Если проще голосом — <a href="tel:+79370854888" data-tel="note">8-937-085-48-88</a>.</p>
         <ul class="facts">
           <li>Работаем с 2009 года</li>
-          <li>4,8 на Яндекс Картах · 503 оценки</li>
+          <li>4,8 на Яндекс Картах · 503 оценки · ноябрь 2026</li>
           <li>Цех пн–пт 9:00–18:00</li>
         </ul>
       </div>
+
+      <figure class="ba">
+        <div class="ba__pair">
+                <div class="ba__item">
+                  <picture>
+                    <source type="image/avif" srcset="/assets/img/kuzov-1-before-400.avif 400w, /assets/img/kuzov-1-before-800.avif 800w" sizes="(min-width: 44rem) 34rem, 92vw">
+                    <img src="/assets/img/kuzov-1-before-800.webp" srcset="/assets/img/kuzov-1-before-400.webp 400w, /assets/img/kuzov-1-before-800.webp 800w" sizes="(min-width: 44rem) 34rem, 92vw" width="800" height="400" alt="УАЗ после ДТП: смято переднее крыло, дверь и капот" decoding="async" fetchpriority="high">
+                  </picture>
+                  <span class="ba__tag">До</span>
+                </div>
+                <div class="ba__item">
+                  <picture>
+                    <source type="image/avif" srcset="/assets/img/kuzov-1-after-400.avif 400w, /assets/img/kuzov-1-after-800.avif 800w" sizes="(min-width: 44rem) 34rem, 92vw">
+                    <img src="/assets/img/kuzov-1-after-800.webp" srcset="/assets/img/kuzov-1-after-400.webp 400w, /assets/img/kuzov-1-after-800.webp 800w" sizes="(min-width: 44rem) 34rem, 92vw" width="800" height="400" alt="Тот же УАЗ после правки, сварки и покраски" loading="lazy" decoding="async">
+                  </picture>
+                  <span class="ba__tag ba__tag--ok">После</span>
+                </div>
+              </div>
+              <figcaption>Кузовной ремонт после ДТП: правка, сварка, покраска. Фото сервиса.</figcaption>
+            </figure>
     </div>
   </section>
-
-  <div class="ba">
-    <div class="shell">
-      <figure>
-        <div class="ba__pair">
-          <div class="ba__item">
-            <picture>
-              <source type="image/avif" srcset="/assets/img/kuzov-1-before-400.avif 400w, /assets/img/kuzov-1-before-800.avif 800w" sizes="(min-width: 44rem) 34rem, 92vw">
-              <img src="/assets/img/kuzov-1-before-800.webp" srcset="/assets/img/kuzov-1-before-400.webp 400w, /assets/img/kuzov-1-before-800.webp 800w" sizes="(min-width: 44rem) 34rem, 92vw" width="800" height="400" alt="УАЗ после ДТП: смято переднее крыло, дверь и капот" decoding="async" fetchpriority="high">
-            </picture>
-            <span class="ba__tag">До</span>
-          </div>
-          <div class="ba__item">
-            <picture>
-              <source type="image/avif" srcset="/assets/img/kuzov-1-after-400.avif 400w, /assets/img/kuzov-1-after-800.avif 800w" sizes="(min-width: 44rem) 34rem, 92vw">
-              <img src="/assets/img/kuzov-1-after-800.webp" srcset="/assets/img/kuzov-1-after-400.webp 400w, /assets/img/kuzov-1-after-800.webp 800w" sizes="(min-width: 44rem) 34rem, 92vw" width="800" height="400" alt="Тот же УАЗ после правки, сварки и покраски" loading="lazy" decoding="async">
-            </picture>
-            <span class="ba__tag ba__tag--ok">После</span>
-          </div>
-        </div>
-        <figcaption>Кузовной ремонт после ДТП: правка, сварка, покраска. Фото сервиса.</figcaption>
-      </figure>
-    </div>
-  </div>
 
   <section class="band">
     <div class="shell">
@@ -237,10 +86,10 @@
         <li><span><b>Модель, год и что случилось одной строкой</b><small>«парковка», «ДТП», «град» — этого достаточно.</small></span></li>
         <li><span><b>Направление или выплата от страховой</b><small>Если есть — напишите, от этого зависит порядок.</small></span></li>
       </ol>
-      <div class="hero__cta" style="margin-top:var(--sp-3)">
-        <a class="btn btn--wa" id="wa-send" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82.%20%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B%D0%B2%D0%B0%D1%8E%20%D1%84%D0%BE%D1%82%D0%BE" target="_blank" rel="noopener" data-wa="steps">Открыть WhatsApp и приложить фото</a>
+      <div class="hero__cta">
+        <a class="btn" id="wa-send" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82.%20%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B%D0%B2%D0%B0%D1%8E%20%D1%84%D0%BE%D1%82%D0%BE" target="_blank" rel="noopener" data-wa="steps">Открыть WhatsApp и приложить фото</a>
       </div>
-      <p class="hero__note" style="color:var(--muted)">Отвечаем в рабочее время цеха: пн–пт 9:00–18:00.</p>
+      <p class="hero__note">Отвечаем в рабочее время цеха: пн–пт 9:00–18:00.</p>
     </div>
   </section>
 
@@ -335,8 +184,8 @@
           <h2>Пришлите фото — назовём вилку</h2>
           <p class="lead">Это быстрее, чем ехать на осмотр вслепую. Фото можно сделать прямо сейчас, стоя у машины.</p>
           <div class="final__actions">
-            <a class="btn btn--wa" id="wa-final" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82.%20%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B%D0%B2%D0%B0%D1%8E%20%D1%84%D0%BE%D1%82%D0%BE" target="_blank" rel="noopener" data-wa="final">Прислать фото в WhatsApp</a>
-            <a class="btn btn--ghost" href="tel:+79370854888" style="color:var(--on-dark);border-color:var(--line-dark)" data-tel="final">Позвонить</a>
+            <a class="btn" id="wa-final" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82.%20%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D1%8B%D0%B2%D0%B0%D1%8E%20%D1%84%D0%BE%D1%82%D0%BE" target="_blank" rel="noopener" data-wa="final">Прислать фото в WhatsApp</a>
+            <a class="btn btn--ghost btn--on-dark" href="tel:+79370854888" data-tel="final">Позвонить</a>
           </div>
         </div>
         <dl class="contacts">
@@ -351,14 +200,14 @@
 </main>
 
 <footer>
-  <div class="shell" style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center">
-    <span style="font-size:var(--fs-small);color:var(--muted)">АБС-Автосервис · Волгоград, Полоненко, 15Б · с 2009 года</span>
-    <a href="/" style="font-size:var(--fs-small);color:var(--muted)">На главную</a>
+  <div class="shell footer__in">
+    <span>АБС-Автосервис · Волгоград, Полоненко, 15Б · с 2009 года</span>
+    <a href="/">На главную</a>
   </div>
 </footer>
 
 <div class="bar" id="bar">
-  <a class="btn btn--wa" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82" target="_blank" rel="noopener" data-wa="bar">Фото в WhatsApp</a>
+  <a class="btn" href="https://wa.me/79370854888?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D0%BA%D1%83%D0%B7%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82" target="_blank" rel="noopener" data-wa="bar">Фото в WhatsApp</a>
   <a class="btn btn--ghost" href="tel:+79370854888" data-tel="bar-note">Позвонить</a>
 </div>
 

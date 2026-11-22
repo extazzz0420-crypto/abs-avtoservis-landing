@@ -605,39 +605,9 @@ button { background: none; border: 0; cursor: pointer; }
 
 .booking__grid {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
+  justify-items: center;
+  gap: 1.5rem;
 }
-
-.booking__lead {
-  max-width: 38ch;
-  margin-top: 1rem;
-  font-size: var(--fs-4);
-  line-height: 1.5;
-  color: var(--fg-2);
-}
-
-.route-map {
-  margin-top: 2.5rem;
-  border-top: 1px solid var(--rule);
-}
-.route-map li {
-  display: grid;
-  grid-template-columns: 2.25rem minmax(0, 1fr);
-  gap: 0.75rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.route-map__num {
-  font-size: var(--fs-2);
-  color: var(--fg-3);
-  letter-spacing: 0.06em;
-}
-.route-map li.is-active .route-map__num { color: var(--accent); }
-.route-map__title { font-weight: 500; }
-.route-map__text { margin-top: 0.2rem; font-size: var(--fs-2); color: var(--fg-2); }
-.route-map__channels { display: flex; gap: 0.4rem; margin-top: 0.6rem; }
 
 .channel-chip {
   padding: 0.2rem 0.55rem;
@@ -657,11 +627,10 @@ button { background: none; border: 0; cursor: pointer; }
 .pstep__channels .channel-chip--accent { border-color: var(--accent); color: var(--base); }
 
 .booking__phone {
-  display: grid;
+  display: inline-grid;
+  justify-items: center;
   gap: 0.25rem;
-  margin-top: 2rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
+  text-align: center;
 }
 .booking__phone span { font-size: var(--fs-2); color: var(--fg-2); }
 .booking__phone strong {
@@ -674,6 +643,7 @@ button { background: none; border: 0; cursor: pointer; }
 
 /* Карточка формы */
 .form-card {
+  width: min(100%, 46rem);
   background: var(--base);
   border: 1px solid var(--rule);
 }
@@ -1588,11 +1558,12 @@ button { background: none; border: 0; cursor: pointer; }
 
 .chat {
   position: fixed;
-  right: var(--gutter);
+  left: var(--gutter);
+  right: auto;
   bottom: 1.25rem;
   z-index: 70;
   display: grid;
-  justify-items: end;
+  justify-items: start;
   gap: 0.5rem;
 }
 .chat__panel {
