@@ -1025,22 +1025,15 @@
   const bookingSection = $('booking');
   const mobileMedia = window.matchMedia('(max-width: 900px)');
 
-  if (mobileBar && heroCta && bookingSection && 'IntersectionObserver' in window) {
-    let heroVisible = true;
-    let bookingVisible = false;
+  if (mobileBar && heroCta && bookingSection) {
     const updateBar = () => {
-      const show = mobileMedia.matches && !heroVisible && !bookingVisible;
-      mobileBar.classList.toggle('is-visible', show);
+      const heroGone = heroCta.getBoundingClientRect().bottom < 0;
+      const bookingRect = bookingSection.getBoundingClientRect();
+      const bookingVisible = bookingRect.top < window.innerHeight && bookingRect.bottom > 0;
+      mobileBar.classList.toggle('is-visible', mobileMedia.matches && heroGone && !bookingVisible);
     };
-    const barObserver = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.target === heroCta) heroVisible = entry.isIntersecting;
-        if (entry.target === bookingSection) bookingVisible = entry.isIntersecting;
-      }
-      updateBar();
-    }, { threshold: 0.01 });
-    barObserver.observe(heroCta);
-    barObserver.observe(bookingSection);
+    window.addEventListener('scroll', updateBar, { passive: true });
+    window.addEventListener('resize', updateBar);
     mobileMedia.addEventListener?.('change', updateBar);
     updateBar();
   }
