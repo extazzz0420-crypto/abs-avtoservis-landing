@@ -121,15 +121,15 @@
 
       <div class="hero__head shell">
         <h1 class="hero__title" id="hero-title">
-          <span class="hero__line"><span>Ремонт и обслуживание</span></span>
-          <span class="hero__line"><span>автомобилей в Волгограде<i class="hero__dot" aria-hidden="true"></i></span></span>
+          <span class="hero__line"><span>Ремонт и ТО на Полоненко, 15Б&nbsp;—</span></span>
+          <span class="hero__line"><span>сумму называем до работ<i class="hero__dot" aria-hidden="true"></i></span></span>
         </h1>
-        <p class="hero__place">Полоненко, 15Б · работаем с 2009 года</p>
+        <p class="hero__place">работаем с 2009 года</p>
       </div>
 
       <div class="hero__body shell">
         <div class="hero__copy">
-          <p class="hero__lede">От диагностики и ходовой до кузовного ремонта. Два цеха на Полоненко, 15Б: слесарный ежедневно 8:00–20:00, кузовной по будням 9:00–18:00.</p>
+          <p class="hero__lede">Диагностика, ходовая, ТО, тормоза, шиномонтаж, сход-развал и кузовной цех. Слесарный — ежедневно 8:00–20:00, кузовной — пн–пт 9:00–18:00.</p>
           <div class="hero__actions">
             <a class="btn" href="#booking"><span>Записаться на ремонт</span><span class="btn__icon" aria-hidden="true">→</span></a>
             <a class="btn btn--link" href="#process"><span>Как проходит ремонт</span><span class="btn__icon" aria-hidden="true">↓</span></a>
@@ -187,13 +187,13 @@
           <button class="sit" type="button" data-service="ТО и тормоза">
             <span class="sit__num">02</span>
             <span class="sit__main"><span class="sit__title">ТО и тормоза</span><span class="sit__desc">Масло, фильтры, колодки, диски</span></span>
-            <span class="sit__price">от 400 ₽</span>
+            <span class="sit__price">от 1 200 ₽</span>
             <span class="sit__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="sit" type="button" data-service="Шиномонтаж и сход-развал">
             <span class="sit__num">03</span>
             <span class="sit__main"><span class="sit__title">Шиномонтаж и сход-развал</span><span class="sit__desc">Сезонная смена, увод в сторону</span></span>
-            <span class="sit__price">от 200 ₽</span>
+            <span class="sit__price">от 2 000 ₽</span>
             <span class="sit__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
           </button>
           <button class="sit" type="button" data-service="Кондиционер">
@@ -272,8 +272,7 @@
           <div class="form-card__body">
             <ol class="steps" aria-label="Шаги заявки">
               <li class="step is-active" data-step-indicator="1" aria-current="step"><span>01</span>Ситуация</li>
-              <li class="step" data-step-indicator="2"><span>02</span>Автомобиль</li>
-              <li class="step" data-step-indicator="3"><span>03</span>Контакты</li>
+              <li class="step" data-step-indicator="2"><span>02</span>Контакты</li>
             </ol>
 
             <p class="form-selection" id="form-selection" hidden>
@@ -301,9 +300,19 @@
               </fieldset>
 
               <fieldset class="step-panel" data-step="2" hidden>
-                <legend>Автомобиль и время</legend>
-                <p class="step-panel__hint">Необязательно — можно уточнить в диалоге.</p>
+                <legend>Как с вами связаться</legend>
+                <p class="step-panel__hint">Телефон нужен, чтобы мы подтвердили время. Автомобиль и удобный час — по желанию.</p>
                 <div class="fields">
+                  <div class="field">
+                    <label for="phone">Телефон <small>обязательно</small></label>
+                    <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" aria-describedby="phone-error">
+                    <span class="field__error" id="phone-error" hidden></span>
+                  </div>
+                  <div class="field">
+                    <label for="name">Имя <small>необязательно</small></label>
+                    <input id="name" name="name" type="text" maxlength="80" autocomplete="name" aria-describedby="name-error">
+                    <span class="field__error" id="name-error" hidden></span>
+                  </div>
                   <div class="field">
                     <label for="car">Автомобиль <small>необязательно</small></label>
                     <input id="car" name="car" type="text" maxlength="120" autocomplete="off" placeholder="Марка, модель, год" aria-describedby="car-error">
@@ -314,23 +323,6 @@
                     <input id="wish-time" name="wish_time" type="text" maxlength="80" autocomplete="off" placeholder="Завтра после 17:00" aria-describedby="wish-time-error">
                     <small>Точное время подтвердим по телефону.</small>
                     <span class="field__error" id="wish-time-error" hidden></span>
-                  </div>
-                </div>
-              </fieldset>
-
-              <fieldset class="step-panel" data-step="3" hidden>
-                <legend>Как с вами связаться</legend>
-                <p class="step-panel__hint">Телефон нужен, чтобы мы подтвердили время.</p>
-                <div class="fields">
-                  <div class="field">
-                    <label for="name">Имя <small>необязательно</small></label>
-                    <input id="name" name="name" type="text" maxlength="80" autocomplete="name" aria-describedby="name-error">
-                    <span class="field__error" id="name-error" hidden></span>
-                  </div>
-                  <div class="field">
-                    <label for="phone">Телефон <small>обязательно</small></label>
-                    <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" aria-describedby="phone-error">
-                    <span class="field__error" id="phone-error" hidden></span>
                   </div>
                 </div>
                 <label class="check">

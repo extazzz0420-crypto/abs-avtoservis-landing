@@ -217,6 +217,7 @@
   const choiceButtons = $$('.choice');
   const stepPanels = $$('.step-panel', form || document);
   const stepIndicators = $$('[data-step-indicator]');
+  const lastStep = stepIndicators.length || 1;
   const stepsBar = document.querySelector('.steps');
   const selectionBar = $('form-selection');
   const selectionText = $('form-selection-text');
@@ -272,8 +273,8 @@
     if (!target) return;
     target.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
     window.setTimeout(() => {
-      const car = $('car');
-      if (car && desktopPointer()) car.focus({ preventScroll: true });
+      const phone = $('phone');
+      if (phone && desktopPointer()) phone.focus({ preventScroll: true });
     }, reduced() ? 0 : 560);
   }
 
@@ -290,8 +291,8 @@
       else indicator.removeAttribute('aria-current');
     });
     if (backButton) backButton.hidden = step === 1;
-    if (nextButton) nextButton.hidden = step === 3;
-    if (submitButton) submitButton.hidden = step !== 3;
+    if (nextButton) nextButton.hidden = step === lastStep;
+    if (submitButton) submitButton.hidden = step !== lastStep;
     if (focus) {
       const panel = stepPanels.find((item) => Number(item.dataset.step) === step);
       const field = panel && panel.querySelector('input:not([type="checkbox"]), select');
@@ -312,7 +313,7 @@
       clearFieldError('service');
       return true;
     }
-    if (step === 3) {
+    if (step === lastStep) {
       let firstInvalid = null;
       const phone = $('phone');
       if (!phone || !phone.value.trim() || !validPhone(phone.value)) {
@@ -455,7 +456,7 @@
 
   async function submitLead() {
     if (submitting) return;
-    if (!validateStep(3)) return;
+    if (!validateStep(lastStep)) return;
     if (!pendingRequestId) pendingRequestId = makeRequestId();
     const payload = buildLeadPayload();
     track('lead_submit', { kind: 'booking', code: selectedCode || 'manual', page: window.location.pathname });
@@ -538,7 +539,7 @@
 
   nextButton?.addEventListener('click', () => {
     if (!validateStep(currentStep)) return;
-    if (currentStep < 3) setStep(currentStep + 1);
+    if (currentStep < lastStep) setStep(currentStep + 1);
   });
 
   backButton?.addEventListener('click', () => {
@@ -547,7 +548,7 @@
 
   form?.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (currentStep < 3) {
+    if (currentStep < lastStep) {
       if (validateStep(currentStep)) setStep(currentStep + 1);
       return;
     }
@@ -1041,15 +1042,19 @@
   /* ── Чат: существующий модуль, грузится по первому клику ──────────── */
 
   const chatWidget = $('chat-widget');
-  let chatRevealed = false;
+  const formSections = [$('booking'), $('estimate')].filter(Boolean);
   const revealChat = () => {
-    if (chatRevealed || !chatWidget) return;
-    if (window.scrollY > window.innerHeight * 0.55) {
-      chatRevealed = true;
-      chatWidget.classList.add('is-visible');
-    }
+    if (!chatWidget) return;
+    const pastFold = window.scrollY > window.innerHeight * 0.55;
+    // Чат не висит поверх формы: там главное действие — заявка, а не переписка.
+    const overForm = formSections.some((section) => {
+      const rect = section.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.15;
+    });
+    chatWidget.classList.toggle('is-visible', pastFold && !overForm);
   };
   window.addEventListener('scroll', revealChat, { passive: true });
+  window.addEventListener('resize', revealChat);
   revealChat();
 
   const chatToggle = $('chat-toggle');
