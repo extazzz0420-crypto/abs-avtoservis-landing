@@ -26,8 +26,8 @@
         href="assets/img/abs-facade-768.avif"
         imagesrcset="assets/img/abs-facade-480.avif 480w, assets/img/abs-facade-768.avif 768w, assets/img/abs-facade-1200.avif 1200w, assets/img/abs-facade-1524.avif 1524w"
         imagesizes="(max-width: 900px) calc(100vw - 2.5rem), 44vw">
-  <link rel="stylesheet" href="styles/tokens.css">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/tokens.css?v=8">
+  <link rel="stylesheet" href="styles/site.css?v=8">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -115,24 +115,24 @@
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__top shell">
-        <p class="eyebrow eyebrow--light">Волгоград · Дзержинский район</p>
+        <p class="eyebrow">Волгоград · Дзержинский район</p>
         <p class="hero__meta">Ежедневно 8:00–20:00 · 3D-развал HUNTER</p>
+      </div>
+
+      <div class="hero__head shell">
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__line"><span>Ремонт и обслуживание</span></span>
+          <span class="hero__line"><span>автомобилей в Волгограде<i class="hero__dot" aria-hidden="true"></i></span></span>
+        </h1>
+        <p class="hero__place">Полоненко, 15Б · работаем с 2009 года</p>
       </div>
 
       <div class="hero__body shell">
         <div class="hero__copy">
-          <h1 class="hero__title" id="hero-title">
-        <span class="hero__line"><span>Ремонт</span></span>
-        <span class="hero__line"><span>и обслуживание</span></span>
-        <span class="hero__line"><span>автомобилей</span></span>
-        <span class="hero__line hero__line--city"><span>в Волгограде<i class="hero__dot" aria-hidden="true"></i></span></span>
-      </h1>
-      <p class="hero__place">Полоненко, 15Б · работаем с 2009 года</p>
-
           <p class="hero__lede">От диагностики и ходовой до кузовного ремонта. Два цеха на Полоненко, 15Б: слесарный ежедневно 8:00–20:00, кузовной по будням 9:00–18:00.</p>
           <div class="hero__actions">
             <a class="btn" href="#booking"><span>Записаться на ремонт</span><span class="btn__icon" aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost btn--on-dark" href="#process"><span>Как проходит ремонт</span><span class="btn__icon" aria-hidden="true">↓</span></a>
+            <a class="btn btn--link" href="#process"><span>Как проходит ремонт</span><span class="btn__icon" aria-hidden="true">↓</span></a>
           </div>
           <p class="hero__call"><span>Или позвоните: <a href="tel:+79370854888" data-phone-click="hero">8-937-085-48-88</a></span><span class="hero__hours">ежедневно 8:00–20:00</span></p>
         </div>
@@ -152,7 +152,7 @@
         </figure>
       </div>
 
-      <div class="hero__facts shell" data-reveal>
+      <div class="hero__facts shell">
         <div class="fact">
           <p class="fact__value">4,8</p>
           <p class="fact__label">на Яндекс Картах · 503 оценки · <a href="https://yandex.ru/maps/org/abs_avtoservis/1309863484/reviews/" target="_blank" rel="noopener">ноябрь 2026</a></p>
@@ -170,15 +170,14 @@
 
     <section class="section situations" id="situations" aria-labelledby="situations-title">
       <div class="shell">
-        <header class="section-head" data-reveal>
-          <span class="chapter" aria-hidden="true">01</span>
+        <header class="section-head">
           <div>
             <h2 class="section-head__title" id="situations-title">Что нужно сделать?</h2>
           </div>
           <p class="section-head__lead">Выберите ситуацию словами клиента. Услуга подставится в заявку — описывать её второй раз не придётся.</p>
         </header>
 
-        <div class="sit-list" data-reveal>
+        <div class="sit-list">
           <button class="sit" type="button" data-service="Диагностика и ходовая">
             <span class="sit__num">01</span>
             <span class="sit__main"><span class="sit__title">Диагностика и ходовая</span><span class="sit__desc">Стук, люфт, ошибка на панели</span></span>
@@ -226,7 +225,7 @@
 
     <section class="section booking" id="booking" aria-labelledby="booking-title">
       <div class="shell booking__grid">
-        <div class="booking__intro" data-reveal>
+        <div class="booking__intro">
           <p class="eyebrow">Заявка</p>
           <h2 class="section-head__title" id="booking-title">Заявка, которая не теряется</h2>
           <p class="booking__lead">Два поля: что случилось и телефон. Автомобиль и удобное время уточним в разговоре.</p>
@@ -265,7 +264,7 @@
           </a>
         </div>
 
-        <div class="form-card" id="lead-form-card" data-reveal style="--i:1">
+        <div class="form-card" id="lead-form-card">
           <div class="form-card__head">
             <p>Заявка на ремонт</p>
             <span>≈ 40 секунд</span>
@@ -377,61 +376,47 @@
     </section>
 
     <section class="process" id="process" aria-labelledby="process-title">
-      <div class="process__pin" data-process>
-        <div class="process__stage">
-          <div class="process__head shell">
-            <div>
-              <p class="eyebrow eyebrow--light">Процесс</p>
-              <h2 class="process__title" id="process-title">Как проходит ремонт</h2>
-              <p class="process__lead">Четыре шага — от заявки до документов. На каждом понятно, что происходит и что будет дальше.</p>
-            </div>
-            <p class="process__count"><b data-process-current>01</b> / 04</p>
+      <div class="shell">
+        <div class="process__head">
+          <div>
+            <p class="eyebrow eyebrow--light">Процесс</p>
+            <h2 class="process__title" id="process-title">Как проходит ремонт</h2>
           </div>
+          <p class="process__lead">Четыре шага — от заявки до документов. На каждом понятно, что происходит и что будет дальше.</p>
+        </div>
 
-          <div class="process__viewport">
-            <div class="process__track shell" data-process-track>
-              <article class="pstep is-active">
-                <p class="pstep__num" aria-hidden="true">01</p>
-                <h3>Заявка</h3>
-                <p>Телефон и услуга. Если знаете, что случилось, опишите словами; если нет — выберите ситуацию. Заявка попадает нам, а не в почту, которую никто не читает.</p>
-              </article>
-              <article class="pstep">
-                <p class="pstep__num" aria-hidden="true">02</p>
-                <h3>Диалог с сервисом</h3>
-                <p>Мы видим услугу, автомобиль и удобное время. Дальше — Telegram-бот или звонок: уточняем детали, подбираем время, отвечаем по цене и запчастям.</p>
-                <div class="pstep__channels" role="group" aria-label="Каналы диалога">
-                  <span class="channel-chip channel-chip--accent">WhatsApp</span>
-                  <span class="channel-chip">Telegram</span>
-                </div>
-              </article>
-              <article class="pstep">
-                <p class="pstep__num" aria-hidden="true">03</p>
-                <h3>Осмотр и согласование</h3>
-                <p>Называем объём и сумму до начала работ. Дополнительные работы — только после вашего согласия, а не «по ходу ремонта».</p>
-              </article>
-              <article class="pstep">
-                <p class="pstep__num" aria-hidden="true">04</p>
-                <h3>Работа и документы</h3>
-                <p>Ремонт, договор и гарантия по правилам сервиса. Условия фиксируются в документах, а не остаются на словах.</p>
-              </article>
+        <div class="process__grid">
+          <article class="pstep">
+            <p class="pstep__num" aria-hidden="true">01</p>
+            <h3>Заявка</h3>
+            <p>Телефон и услуга. Если знаете, что случилось, опишите словами; если нет — выберите ситуацию. Заявка попадает нам, а не в почту, которую никто не читает.</p>
+          </article>
+          <article class="pstep">
+            <p class="pstep__num" aria-hidden="true">02</p>
+            <h3>Диалог с сервисом</h3>
+            <p>Мы видим услугу, автомобиль и удобное время. Дальше — Telegram-бот или звонок: уточняем детали, подбираем время, отвечаем по цене и запчастям.</p>
+            <div class="pstep__channels" role="group" aria-label="Каналы диалога">
+              <span class="channel-chip channel-chip--accent">WhatsApp</span>
+              <span class="channel-chip">Telegram</span>
             </div>
-          </div>
-
-          <div class="process__bar shell">
-            <p class="process__hint">Листайте</p>
-            <div class="process__progress">
-              <div class="process__rail"><span class="process__fill" data-process-fill></span></div>
-              <div class="process__ticks" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <a class="btn btn--small" href="#booking">Записаться</a>
-          </div>
+          </article>
+          <article class="pstep">
+            <p class="pstep__num" aria-hidden="true">03</p>
+            <h3>Осмотр и согласование</h3>
+            <p>Называем объём и сумму до начала работ. Дополнительные работы — только после вашего согласия, а не «по ходу ремонта».</p>
+          </article>
+          <article class="pstep">
+            <p class="pstep__num" aria-hidden="true">04</p>
+            <h3>Работа и документы</h3>
+            <p>Ремонт, договор и гарантия по правилам сервиса. Условия фиксируются в документах, а не остаются на словах.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section prices" id="prices" aria-labelledby="prices-title">
       <div class="shell prices__grid">
-        <div class="prices__intro" data-reveal>
+        <div class="prices__intro">
           <p class="eyebrow">Цены</p>
           <h2 class="section-head__title" id="prices-title">Сколько стоит —<br>до начала работ</h2>
           <p class="prices__lead">ТО, ходовая, тормоза, диагностика, шиномонтаж, сход-развал, кондиционеры и кузов. Все цены «от»: итог зависит от модели, состояния автомобиля и запчастей. Объём и сумму согласуем до начала ремонта.</p>
@@ -465,7 +450,7 @@
           <h2 class="section-head__title" id="body-title">Кузовной ремонт: вилка до осмотра</h2>
           <p class="bodywork__lead">Основное направление сервиса с 2009 года: геометрия, рихтовка, сварка, покраска, полировка, пластик. Предварительную вилку можно собрать здесь — без звонка и фото.</p>
 
-          <ul class="bodywork__facts" data-reveal>
+          <ul class="bodywork__facts">
             <li><span class="fact-k">График</span><span class="fact-v">Кузовной цех — пн–пт 9:00–18:00. Слесарный — ежедневно 8:00–20:00.</span></li>
             <li><span class="fact-k">Документы</span><span class="fact-v">Ремонт и покраска — по договору: условия и гарантия в нём.</span></li>
             <li><span class="fact-k">Оценка</span><span class="fact-v">Вилка предварительная. Точную сумму назовём после осмотра.</span></li>
@@ -473,7 +458,8 @@
           <p class="bodywork__price"><span>Ремонт и покраска крыла — от 16 000 ₽</span> · <span>двери — от 20 000 ₽</span> · <span>бампера — от 16 000 ₽</span></p>
         </div>
 
-        <figure class="ba" data-reveal>
+        <div class="bodywork__side">
+        <figure class="ba">
           <div class="ba__pair">
             <div class="ba__item">
               <picture>
@@ -576,12 +562,13 @@
             <button class="estimate-result__again" type="button" id="estimate-again">Новый расчёт</button>
           </div>
         </div>
+        </div>
       </div>
     </section>
 
     <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
       <div class="shell">
-        <div class="reviews__top" data-reveal>
+        <div class="reviews__top">
           <div>
             <p class="eyebrow">Отзывы</p>
             <div class="reviews__score">
@@ -592,7 +579,7 @@
           <p class="reviews__meta">249 отзывов на Яндекс Картах<br>снимок: ноябрь 2026</p>
         </div>
 
-        <div class="reviews__grid" data-reveal>
+        <div class="reviews__grid">
           <figure class="review">
             <blockquote><p>Все на высоте. Персонал — профессионалы. Успехов вашему сервису!</p></blockquote>
             <figcaption>Яндекс Карты · ноябрь 2026</figcaption>
@@ -620,7 +607,7 @@
 
     <section class="section faq" id="faq" aria-labelledby="faq-title">
       <div class="shell faq__grid">
-        <div class="faq__intro" data-reveal>
+        <div class="faq__intro">
           <p class="eyebrow">Вопросы</p>
           <h2 class="section-head__title" id="faq-title">Что спрашивают до записи</h2>
           <p class="faq__lead">Если ответа нет — позвоните: ответим без скриптов.</p>
@@ -711,7 +698,7 @@
           <p class="contacts__phone"><strong>Если удобнее голосом — <a href="tel:+79370854888" data-phone-click="contacts">8-937-085-48-88</a>, WhatsApp и Viber на том же номере.</strong> Разница одна. По звонку отвечаем на вопросы, а время всё равно согласуем вторым звонком. В заявке услуга уже отмечена, и перезваниваем мы — дозваниваться вам не нужно.</p>
         </div>
 
-        <div class="contacts__side" data-reveal style="--i:1">
+        <div class="contacts__side">
           <div class="route-card">
             <div class="route-card__map" aria-hidden="true">
               <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">

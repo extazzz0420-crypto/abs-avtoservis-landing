@@ -1,5 +1,6 @@
 /* АБС-Автосервис — единственный источник токенов.
-   Ни один цвет, кегль, отступ или кривая движения не задаётся мимо этого файла. */
+   Блок «v3» — главная страница (styles/site.css).
+   Блок «legacy» — zapis.html и kuzov/, пока не переведены: не переименовывать. */
 
 @font-face {
   font-family: "Onest";
@@ -20,7 +21,61 @@
 :root {
   color-scheme: light;
 
-  /* Палитра: фарфор, чернила, глубокий синий, алый маркер. */
+  /* ── v3: папир и чернила ─────────────────────────────────────────── */
+  --base: #f5f3ee;          /* тёплая бумага — фон страницы */
+  --base-2: #edeae3;        /* вторая бумага — секции-паузы */
+  --base-3: #e4e0d6;        /* третья бумага — подложки медиа */
+  --fg: #101418;            /* графит — основной текст */
+  --fg-2: #566068;          /* вторичный текст, 5,8:1 на base */
+  --fg-3: #626a72;          /* служебный, 4,95:1 на base */
+  --deep: #0c2233;          /* тёмные секции */
+  --deep-2: #123049;
+  --accent: #b3221f;        /* алый: только действие и маркер */
+  --accent-ink: #8c1917;
+  --accent-soft: #f2e2e0;
+  --rule: rgb(16 20 24 / 0.14);
+  --rule-soft: rgb(16 20 24 / 0.08);
+  --rule-deep: rgb(245 243 238 / 0.16);
+  --rule-deep-soft: rgb(245 243 238 / 0.08);
+  --on-deep: #f5f3ee;
+  --on-deep-2: #a7b4c0;     /* 7,7:1 на deep */
+  --ok: #1d6b45;
+  --error: #a01c1a;
+
+  --font-text: "Onest", "Segoe UI", Arial, sans-serif;
+  --font-display: "Unbounded", "Onest", "Segoe UI", Arial, sans-serif;
+
+  --fs-1: 0.6875rem;                                        /* 11 — метка */
+  --fs-2: 0.8125rem;                                        /* 13 — служебный */
+  --fs-3: 1rem;                                             /* 16 — текст */
+  --fs-4: clamp(1.0625rem, 0.99rem + 0.3vw, 1.1875rem);     /* 17–19 — лид */
+  --fs-5: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);         /* 22–28 — h3 */
+  --fs-6: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);             /* 32–52 — h2 */
+  --fs-7: clamp(2.5rem, 1.2rem + 4.4vw, 4.5rem);            /* 40–72 — h1 */
+
+  --sp-1: 0.5rem;
+  --sp-2: 0.75rem;
+  --sp-3: 1rem;
+  --sp-4: 1.5rem;
+  --sp-5: 2.5rem;
+  --sp-6: 4rem;
+  --section-y: clamp(4.5rem, 8vw, 8rem);
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --container: 82rem;
+
+  --r-1: 2px;
+  --r-2: 999px;
+
+  --shadow-float: 0 1.5rem 4rem rgb(16 20 24 / 0.18);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 160ms;
+  --t-state: 280ms;
+  --t-slow: 520ms;
+
+  --header-h: 4.5rem;
+
+  /* ── legacy: zapis.html и kuzov/ ─────────────────────────────────── */
   --porcelain: #f2f4f7;
   --paper: #ffffff;
   --ink: #121b28;
@@ -37,46 +92,13 @@
   --on-dark: #f4f7fb;
   --on-dark-muted: #a9bad1;
   --line-dark: rgb(255 255 255 / 0.14);
-  --ok: #1c6b42;
-  --error: #a5141b;
-
-  /* Типографика. Unbounded — монументальные акценты, Onest — текст и заголовки. */
-  --font-text: "Onest", "Segoe UI", Arial, sans-serif;
-  --font-display: "Unbounded", "Onest", "Segoe UI", Arial, sans-serif;
-
-  --fs-label: 0.6875rem;   /* 11 */
-  --fs-small: 0.8125rem;   /* 13 */
-  --fs-body: 1rem;         /* 16 */
+  --fs-label: 0.6875rem;
+  --fs-small: 0.8125rem;
+  --fs-body: 1rem;
   --fs-lead: clamp(1.0625rem, 0.98rem + 0.42vw, 1.3125rem);
   --fs-h3: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
   --fs-h2: clamp(2rem, 1.35rem + 3.1vw, 3.75rem);
   --fs-h1: clamp(2.3rem, 0.4rem + 6.1vw, 6.4rem);
   --fs-mega: clamp(3.25rem, 1.2rem + 8.5vw, 8rem);
-
-  /* Сетка 8pt: шесть шагов, дальше — только section-y. */
-  --sp-1: 0.5rem;
-  --sp-2: 1rem;
-  --sp-3: 1.5rem;
-  --sp-4: 2.5rem;
-  --sp-5: 4rem;
-  --sp-6: 6rem;
-  --section-y: clamp(4.5rem, 9vw, 10rem);
-  --gutter: clamp(1.25rem, 4vw, 4rem);
-  --container: 90rem;
-
-  /* Два радиуса: техничный угол и пилюля для чипов. */
-  --r-1: 2px;
-  --r-2: 999px;
-
-  /* Тень только у плавающих слоёв. */
-  --shadow-float: 0 1.5rem 4rem rgb(7 32 63 / 0.18);
-
-  /* Движение: одна кривая характера + медленная для крупных сцен. */
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-line: cubic-bezier(0.87, 0, 0.13, 1);
-  --t-fast: 180ms;
-  --t-state: 320ms;
-  --t-slow: 760ms;
-
-  --header-h: 4.75rem;
 }
