@@ -670,6 +670,33 @@
 
     const draft = $('prices-draft');
     if (draft) draft.hidden = data.draft !== true;
+
+    applyAnchorPrices(data);
+  }
+
+  // Цены в ситуациях — не минимум категории, а позиция-якорь из anchors{}.
+  // Нет якоря или позиции — число не показываем: минимум здесь врёт.
+  function applyAnchorPrices(data) {
+    const anchors = data && data.anchors;
+    if (!anchors || typeof anchors !== 'object') return;
+    const byCode = new Map();
+    for (const category of data.categories || []) {
+      for (const item of category.items || []) {
+        if (item && item.code) byCode.set(item.code, item);
+      }
+    }
+    $$('.sit[data-anchor-category]').forEach((button) => {
+      const code = anchors[button.dataset.anchorCategory];
+      const item = code ? byCode.get(code) : null;
+      const out = button.querySelector('.sit__price');
+      if (!out) return;
+      if (!item || !Number.isFinite(Number(item.price))) {
+        out.hidden = true;
+        return;
+      }
+      out.hidden = false;
+      out.textContent = `${item.price_from ? 'от ' : ''}${money(item.price)}`;
+    });
   }
 
   function buildFilters(categories) {
