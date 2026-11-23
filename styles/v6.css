@@ -187,6 +187,25 @@ button { font: inherit; }
 
 /* ── Первый экран ───────────────────────────────────────────────────── */
 .hero { padding-top: clamp(16px, 2.4vw, 36px); }
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "eyebrow"
+    "title"
+    "lede"
+    "cta"
+    "idle"
+    "media"
+    "facts";
+  align-items: start;
+}
+.hero__eyebrow { grid-area: eyebrow; }
+.hero__title { grid-area: title; }
+.hero__lede { grid-area: lede; }
+.hero__cta { grid-area: cta; }
+.hero__idle { grid-area: idle; }
+.hero__media { grid-area: media; }
 .hero__eyebrow {
   display: flex;
   align-items: baseline;
@@ -274,6 +293,9 @@ button { font: inherit; }
 
 /* ── Полоса фактов ──────────────────────────────────────────────────── */
 .facts {
+  grid-area: facts;
+  margin-inline: calc(var(--gut) * -1);
+  padding-inline: var(--gut);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--paper);
@@ -615,7 +637,7 @@ button { font: inherit; }
 .quote p { font-size: 16.5px; line-height: 1.5; }
 
 /* ── FAQ ────────────────────────────────────────────────────────────── */
-.faq { border-top: 1px solid var(--line); }
+.faq { max-width: 900px; border-top: 1px solid var(--line); }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary {
   display: flex;
@@ -745,11 +767,40 @@ button { font: inherit; }
 /* ── Мобильная панель ───────────────────────────────────────────────── */
 .mbar { display: none; }
 
+@media (min-width: 901px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr) clamp(232px, 22vw, 330px);
+    grid-template-areas:
+      "eyebrow eyebrow"
+      "title   facts"
+      "lede    facts"
+      "cta     facts"
+      "idle    facts"
+      "media   media";
+    column-gap: clamp(24px, 3vw, 64px);
+  }
+  .facts {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    margin-inline: 0;
+    padding-inline: 0;
+    border: 1px solid var(--line);
+  }
+  .facts__in {
+    flex: 1;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+  .fact { justify-content: center; padding: 18px 22px; }
+}
+
 @media (max-width: 1024px) {
   .sits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
+  .faq { max-width: none; }
   .nav, .hd__tel { display: none; }
   .btn--hd { margin-left: auto; background: var(--navy); border-color: var(--navy); color: #fff; }
   .btn--hd:hover { background: #06264e; border-color: #06264e; }
@@ -828,7 +879,7 @@ button { font: inherit; }
 }
 
 @media (max-width: 430px) {
-  .hero__title { font-size: 2rem; }
+  .hero__title { font-size: 31px; }
   .btn--main { width: 100%; }
   .hero__note { font-size: 13.5px; }
   .plate { font-size: 13.5px; padding: 9px 12px; }
