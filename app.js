@@ -4,7 +4,9 @@
   'use strict';
 
   const API = '/api/abs/v1';
-  const CONSENT_VERSION = 'site-consent-v1';
+  // v2: к согласию добавлена ссылка на политику обработки ПДн (/privacy/),
+  // поэтому текст согласия отличается от v1 — версия растёт вместе с текстом.
+  const CONSENT_VERSION = 'site-consent-v2';
   const PHONE_DISPLAY = '8-937-085-48-88';
   const PHONE_HREF = 'tel:+79370854888';
   const $ = (id) => document.getElementById(id);

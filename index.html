@@ -27,7 +27,7 @@
         imagesrcset="assets/img/abs-facade-480.avif 480w, assets/img/abs-facade-768.avif 768w, assets/img/abs-facade-1200.avif 1200w, assets/img/abs-facade-1524.avif 1524w"
         imagesizes="(max-width: 900px) calc(100vw - 2.5rem), 44vw">
   <link rel="stylesheet" href="styles/tokens.css?v=16">
-  <link rel="stylesheet" href="styles/site.css?v=16">
+  <link rel="stylesheet" href="styles/site.css?v=17">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -298,6 +298,7 @@
                   <span>Согласен на обработку персональных данных</span>
                 </label>
                 <span class="field__error consent-error" id="consent-pd-error" hidden></span>
+                <p class="consent-note"><a href="/privacy/" target="_blank" rel="noopener">Политика обработки персональных данных</a></p>
                 <label class="check check--small">
                   <input id="consent-ads" name="consent_ads" type="checkbox">
                   <span>Присылать новости и предложения сервиса</span>
@@ -504,6 +505,7 @@
               <span>Согласен на обработку персональных данных</span>
             </label>
             <span class="field__error consent-error" id="estimate-consent-error" hidden></span>
+            <p class="consent-note"><a href="/privacy/" target="_blank" rel="noopener">Политика обработки персональных данных</a></p>
 
             <div class="hp" aria-hidden="true"><input id="estimate-website" type="text" tabindex="-1" autocomplete="off"></div>
 
@@ -689,8 +691,9 @@
             </div>
           </div>
 
-          <!-- Блок «Гарантия» снят до ответа владельца: три строки из четырёх — обязательства
-               с неподтверждёнными сроками (copy.md, п. 6). Возвращается тем же коммитом. -->
+          <!-- Блок «Гарантия» не публикуем: владелец 23.11.2026 — гарантия распространяется только
+               на кузовной ремонт и конкретных сроков он не называет, поэтому цифр на сайте не будет.
+               Общие слова «по договору» уже стоят в блоке 04 и в FAQ. -->
 
 
           <div class="contacts__note">
@@ -718,7 +721,7 @@
     </div>
   </footer>
 
-  <div class="mobile-bar" id="mobile-bar">
+  <div class="mobile-bar" id="mobile-bar" role="region" aria-label="Быстрые действия: запись и звонок">
     <a class="btn" href="#booking"><span>Записаться</span><span class="btn__icon" aria-hidden="true">→</span></a>
     <a class="btn btn--ghost" href="tel:+79370854888" data-phone-click="mobile"><span>Позвонить</span></a>
   </div>
@@ -743,7 +746,7 @@
         <textarea class="chat__input" id="chat-input" name="message" rows="1" maxlength="1000" placeholder="Напишите сообщение…" enterkeyhint="send" aria-describedby="chat-consent"></textarea>
         <button class="chat__send" type="submit" id="chat-send">Отправить</button>
       </form>
-      <p class="chat__consent" id="chat-consent">Отправляя сообщение, вы соглашаетесь на обработку персональных данных.</p>
+      <p class="chat__consent" id="chat-consent">Отправляя сообщение, вы соглашаетесь на обработку персональных данных — <a href="/privacy/" target="_blank" rel="noopener">политика</a>.</p>
     </section>
     <button class="chat__toggle" type="button" id="chat-toggle" aria-expanded="false" aria-controls="chat-panel">Онлайн-помощник</button>
   </div>

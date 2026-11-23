@@ -823,6 +823,18 @@ button { background: none; border: 0; cursor: pointer; }
   transform: rotate(-45deg) translateY(-1px);
 }
 .check--small { font-size: var(--fs-1); }
+.consent-note {
+  margin: 0.3rem 0 0;
+  font-size: var(--fs-1);
+  line-height: 1.5;
+  color: var(--fg-3);
+}
+.consent-note a {
+  color: var(--fg-2);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.consent-note a:hover { color: var(--fg); }
 .consent-error { display: block; margin-top: 0.35rem; }
 
 .hp {
@@ -1648,6 +1660,7 @@ button { background: none; border: 0; cursor: pointer; }
 .chat__send { min-height: 2.75rem; padding: 0.5rem 0.9rem; background: var(--fg); color: var(--base); font-size: var(--fs-2); }
 .chat__send:hover { background: var(--accent); }
 .chat__consent { padding: 0 0.75rem 0.75rem; font-size: 0.625rem; line-height: 1.4; color: var(--fg-3); }
+.chat__consent a { color: var(--fg-2); text-decoration: underline; text-underline-offset: 0.15em; }
 .chat__ask-phone { padding: 0 1rem 0.75rem; }
 .chat__ask-phone button {
   width: 100%;

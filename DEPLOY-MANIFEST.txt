@@ -47,6 +47,7 @@ kuzov/index.html
 order.html
 order.js
 prices-fallback.js
+privacy/index.html
 site-config.json
 styles/kuzov.css
 styles/main.css
