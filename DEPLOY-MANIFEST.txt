@@ -44,8 +44,13 @@ chat.js
 index.html
 kuzov.html
 kuzov/index.html
+order.html
+order.js
 prices-fallback.js
 site-config.json
+styles/kuzov.css
 styles/main.css
+styles/order.css
+styles/site.css
 styles/tokens.css
 zapis.html
