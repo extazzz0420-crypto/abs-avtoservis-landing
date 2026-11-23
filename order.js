@@ -12,6 +12,11 @@
   const $ = (id) => document.getElementById(id);
   const fmtMoney = (n) =>
     new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(n) + '\u00a0₽';
+  /* Строки ленты приходят с сервера готовым текстом, с обычными пробелами:
+     «… — 3 500 ₽» рвётся между 3 и 500 на 320 px. Склеиваем только числа и знак ₽. */
+  const protectMoney = (s) => String(s)
+    .replace(/(\d)[ \u00a0](?=\d{3}(\D|$))/g, '$1\u00a0')
+    .replace(/(\d)[ \u00a0]₽/g, '$1\u00a0₽');
   const fmtTime = (iso) => {
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return '';
@@ -411,7 +416,7 @@
     timeline.forEach((t) => {
       eventList.append(el('li', {}, [
         el('time', { datetime: t.at || '', text: t.at ? fmtTime(t.at) : '' }),
-        el('span', { text: t.text || '' }),
+        el('span', { text: protectMoney(t.text || '') }),
       ]));
     });
     events.hidden = timeline.length < 2;
