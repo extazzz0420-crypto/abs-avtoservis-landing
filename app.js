@@ -21,8 +21,14 @@
   /* События для abs.site_event: приёмник ждёт wa_click, tel_click, messenger_click,
      form_start, form_error. dataLayer уходит в GTM, но не в базу — поэтому шлём beacon.
      idem уникален на каждый клик, иначе дедуп приёмника проглотит повторного человека. */
-  const pageKey = () => (location.pathname.replace(/\/+$/, '').replace(/^\//, '') || 'index')
-    .replace(/[^a-z0-9-]/gi, '').slice(0, 16).toLowerCase();
+  const pageKey = () => {
+    // '/kuzov/index.html' → 'kuzov', '/zapis.html' → 'zapis', '/' → 'index':
+    // иначе в abs.events страница приходит как 'kuzovindexhtml' и с отчётом по 'kuzov' не сходится.
+    const p = location.pathname.replace(/\/+$/, '').replace(/^\//, '');
+    if (!p || p === 'index.html') return 'index';
+    const clean = p.replace(/\/index\.html$/, '').replace(/\.html?$/, '').replace(/\/+/g, '-');
+    return (clean.replace(/[^a-z0-9-]/gi, '') || 'index').slice(0, 16).toLowerCase();
+  };
 
   const sendEvent = (type, data = {}) => {
     try {
@@ -1128,6 +1134,21 @@
       const src = link.dataset.phoneClick || 'unknown';
       track('phone_click', { block: src, page: window.location.pathname });
       sendEvent('tel_click', { src });
+    });
+  });
+
+  /* ── Точки входа по контракту v5: data-tel / data-tg / data-max ────────
+     Значение атрибута — это src (header, hero-idle, contacts, kuzov-photo),
+     а не флаг: пустой data-tel уже один раз дал бы src=unknown при зелёном статусе.
+     MAX до запуска не рендерится ссылкой; когда появится data-max — клик пойдёт
+     в messenger_click без правки этого файла. */
+  $$('[data-tel], [data-tg], [data-max]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const raw = link.dataset.tel || link.dataset.tg || link.dataset.max || 'unknown';
+      const src = raw.toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 12) || 'unknown';
+      const type = link.dataset.tel ? 'tel_click' : 'messenger_click';
+      track(type, { block: src, page: window.location.pathname });
+      sendEvent(type, { src });
     });
   });
 

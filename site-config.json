@@ -2,5 +2,10 @@
   "_comment": "Состояние запуска сайта. Один файл вместо флагов в командной строке и констант в гейте: три правила (noindex, canonical, MAX) включаются здесь, а не в трёх разных местах.",
   "base_url": "",
   "index_allowed": false,
-  "max_enabled": false
+  "max_enabled": false,
+  "max_ready": false,
+  "telegram_confirmed": true,
+  "telegram_bot": "abs_auto34_bot",
+  "phone_main": "79370854888",
+  "phone_text_max": 3
 }

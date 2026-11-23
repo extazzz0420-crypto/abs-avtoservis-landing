@@ -970,7 +970,7 @@ button { background: none; border: 0; cursor: pointer; }
   font-size: clamp(2rem, 1.2rem + 2.2vw, 3rem);
   font-weight: 200;
   line-height: 1;
-  color: rgb(245 243 238 / 0.24);
+  color: rgb(244 247 251 / 0.24);
 }
 .pstep h3 {
   margin-top: clamp(2rem, 4vw, 3.5rem);
