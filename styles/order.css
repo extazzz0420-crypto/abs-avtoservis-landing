@@ -184,11 +184,8 @@
 .decision[data-severity="recommended"] .decision__flag { color: var(--fg-2); }
 .decision__no { font-variant-numeric: tabular-nums; }
 .decision__price {
-  margin-left: auto;
-  font-size: var(--fs-3);
   font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
+  letter-spacing: -0.01em;
   color: var(--fg);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -217,6 +214,12 @@
 }
 .decision__actions .btn--link { min-height: 2.75rem; padding-block: 0.55rem; }
 .decision__status { margin: 0; font-size: var(--fs-2); color: var(--fg-2); }
+.decision__reassure {
+  margin: 0.25rem 0 0;
+  font-size: var(--fs-2);
+  line-height: 1.45;
+  color: var(--fg-2);
+}
 .decision__status.is-error { color: var(--error); }
 .decision__status.is-ok { color: var(--ok); }
 .decision__settled {

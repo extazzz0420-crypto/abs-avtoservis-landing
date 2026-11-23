@@ -253,11 +253,11 @@
     });
 
     const pending = approvals.filter((a) => a.can_answer).length;
-    $('decisions-title').textContent = pending ? 'Нужно ваше решение' : 'Дополнительные работы';
+    $('decisions-title').textContent = pending ? 'Нашли ещё работу' : 'Дополнительные работы';
     $('decisions-lead').textContent = pending === 1
-      ? 'Мастер нашёл ещё одну работу. Скажите, делать ли её сейчас, — это одна кнопка.'
+      ? 'Скажите, делать ли её сейчас, — это одна кнопка.'
       : pending
-        ? `Мастер нашёл ${pending} ${plural(pending, 'работу', 'работы', 'работ')}, которые стоит сделать сейчас. Одна кнопка — и мы поняли ваш ответ.`
+        ? 'Скажите по каждой: делать или нет.'
         : 'Все дополнительные работы согласованы.';
 
     approvals.forEach((approval) => list.append(approvalCard(approval)));
@@ -269,9 +269,13 @@
     const top = el('div', { class: 'decision__top' }, [
       a.severity_label ? el('span', { class: 'decision__flag', text: a.severity_label }) : null,
       a.no ? el('span', { class: 'decision__no', text: a.no }) : null,
-      typeof a.price === 'number' ? el('span', { class: 'decision__price', text: fmtMoney(a.price) }) : null,
     ]);
-    card.append(top, el('h3', { class: 'decision__title', text: a.title || '' }));
+    // Название и цена — одной строкой: «что нашли — сколько стоит». Второго числа рядом нет.
+    const title = el('h3', { class: 'decision__title' }, [a.title || '']);
+    if (typeof a.price === 'number') {
+      title.append(el('span', { class: 'decision__price', text: ` — ${fmtMoney(a.price)}` }));
+    }
+    card.append(top, title);
 
     const photos = Array.isArray(a.photos) ? a.photos : [];
     if (photos.length) {
@@ -308,7 +312,10 @@
         }));
       }
       const status = el('p', { class: 'decision__status', role: 'status', 'aria-live': 'polite' });
-      card.append(actions, status);
+      card.append(actions, status, el('p', {
+        class: 'decision__reassure',
+        text: 'Отказ ничего не меняет: остальные работы сделаем как договаривались',
+      }));
     } else {
       const settled = el('p', { class: 'decision__settled', 'data-status': a.status || '', text: settledText(a) });
       card.append(settled);
