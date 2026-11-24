@@ -265,8 +265,9 @@ var data = res.data || {}, fields = data.fields || {};
 if(res.ok && data.ok === true){
 var dup = data.status === 'duplicate';
 messengers(data.messenger);
-showDone('api', dup ? 'Заявка уже у нас' : 'Заявка принята', data.lead_no || '',
-data.message || (dup ? 'Повторно отправлять не нужно: номер заявки тот же.' : ''));
+var msg = data.message || (dup ? 'Повторно отправлять не нужно: номер заявки тот же.' : '');
+if(/свяжемся|перезвон/i.test(msg)) msg = 'Заявка принята. Продолжите в Telegram — бот уточнит детали.';
+showDone('api', dup ? 'Заявка уже у нас' : 'Заявка принята', data.lead_no || '', msg);
 track('lead_accepted', { status: data.status || 'accepted', scenario: code || 'manual' });
 rid = null;
 return;
