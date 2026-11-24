@@ -4,7 +4,7 @@ var F = document.getElementById('lead-form');
 if(!F) return;
 var D = document, q = function(i ){ return D.getElementById(i); };
 var API = '/api/abs/v1', CONSENT = 'site-consent-v2';
-var base = API, mode = 'transfer', step = 1, code = null, chosen = '', busy = false, rid = null, maxProfile = '';
+var base = API, mode = 'transfer', step = 1, code = null, chosen = '', busy = false, rid = null, maxProfile = '', channel = '';
 var steps = F.querySelectorAll('[data-step-indicator]');
 var panes = F.querySelectorAll('.lead__pane');
 var chips = F.querySelectorAll('.chip[data-service-code]');
@@ -96,6 +96,11 @@ err('lead-service');
 paint();
 }
 function toLead( ){ q('lead').scrollIntoView({ behavior: sb(), block: 'start' }); }
+function setChannel(v){
+channel = v === 'max' ? 'max' : '';
+var n = q('lead-chan');
+if(n) n.hidden = channel !== 'max';
+}
 D.addEventListener('click', function(e){
 var el = e.target.closest && e.target.closest('.chip[data-service-code], .sit[data-service]');
 if(!el || !F) return;
@@ -168,6 +173,8 @@ F.hidden = true;
 box.hidden = false;
 q('lead-done-api').hidden = kind !== 'api';
 q('lead-done-transfer').hidden = kind !== 'transfer';
+var cn = q('lead-chan-done');
+if(cn) cn.hidden = kind !== 'api' || channel !== 'max';
 if(kind === 'api') q('lead-check').classList.add('is-on');
 st('');
 box.focus({ preventScroll: true });
@@ -180,6 +187,7 @@ var car = cut(q('lead-car').value, 60), when = cut(q('lead-time').value, 80), na
 if(car) t.push('🚗 Автомобиль: ' + car);
 if(when) t.push('🕐 Когда удобно: ' + when);
 if(name) t.push('👤 Имя: ' + name);
+if(channel === 'max') t.push('💬 Ответить в: MAX');
 t.push('📞 Телефон: ' + pIn.value.trim(), 'Прошу подтвердить время.');
 return t.join('\n');
 }
@@ -219,7 +227,15 @@ a.textContent = 'Открыть MAX';
 a.addEventListener('click', function( ){ track('messenger_click', { src: 'max' }); });
 slot.append(a);
 }
-function submitTransfer( ){ q('lead-text').value = buildText(); transferMax(); showDone('transfer'); }
+function submitTransfer( ){
+q('lead-text').value = buildText();
+var lead = q('lead-transfer-lead');
+if(lead) lead.textContent = channel === 'max'
+  ? 'Скопируйте текст и отправьте его в наш Telegram — менеджер ответит в MAX.'
+  : 'Скопируйте текст и отправьте его в наш Telegram — или позвоните.';
+transferMax();
+showDone('transfer');
+}
 function setBusy(v){
 busy = v;
 var b = q('lead-send');
@@ -239,6 +255,7 @@ consent: { pd: ok.checked, ads: false, text_version: CONSENT },
 website: q('lead-website').value
 };
 if(code && /^[a-z0-9_]{2,64}$/.test(code)) body.service_code = code;
+if(channel === 'max') body.comment = 'Прошу связаться в MAX.';
 if(Object.keys(utm).length) body.utm = utm;
 if(ref && /^[A-Za-z0-9_-]{4,32}$/.test(ref)) body.ref = ref;
 return body;
@@ -320,6 +337,7 @@ F.reset();
 chosen = '';
 code = null;
 rid = null;
+setChannel('');
 F.hidden = false;
 q('lead-done').hidden = true;
 q('lead-check').classList.remove('is-on');
@@ -332,6 +350,7 @@ setTimeout(function( ){ F.querySelector('.chip').focus({ preventScroll: true });
 D.querySelectorAll('[data-form]').forEach(function(a){
 a.addEventListener('click', function(){
 if(F.hidden) return;
+setChannel('');
 setTimeout(function(){
 var t = a.dataset.leadFocus === 'service' ? sIn : step === 1 ? F.querySelector('.chip') : pIn;
 if(a.dataset.leadFocus === 'service' && step !== 1) setStep(1, false);
@@ -342,6 +361,15 @@ t.focus({ preventScroll: true });
 D.addEventListener('click', function(e){
 var a = e.target.closest && e.target.closest('a[data-tel]');
 if(a) track('tel_click', { src: a.dataset.tel });
+});
+var maxBtn = q('hero-max');
+if(maxBtn) maxBtn.addEventListener('click', function(){
+setChannel('max');
+toLead();
+setTimeout(function( ){
+var t = step === 1 ? F.querySelector('.chip') : pIn;
+if(t) t.focus({ preventScroll: true });
+}, less ? 0 : 420);
 });
 initMode();
 setStep(1, false);

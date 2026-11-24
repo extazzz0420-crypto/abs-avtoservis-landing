@@ -11,5 +11,6 @@
   "phone_main": "79370854888",
   "phone_text_max": 4,
   "lead_mode": "transfer",
-  "api_base": ""
+  "api_base": "",
+  "max_placeholder": true
 }

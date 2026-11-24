@@ -33,26 +33,5 @@ io.unobserve(e.target);
 });
 }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
 items.forEach(function(el ){ io.observe(el); });
-var counters = D.querySelectorAll('[data-count]');
-var run = function(el){
-var to = parseFloat(el.dataset.count.replace(',', '.'));
-var from = parseFloat((el.dataset.from || '0').replace(',', '.'));
-var dec = (el.dataset.count.split(',')[1] || '').length;
-var t0 = performance.now();
-var tick = function(now){
-var p = Math.min(1, (now - t0) / 900);
-var v = from + (to - from) * (1 - Math.pow(1 - p, 3));
-el.textContent = dec ? v.toFixed(dec).replace('.', ',') : String(Math.round(v));
-if(p < 1) requestAnimationFrame(tick);
-};
-requestAnimationFrame(tick);
-};
-var co = new IntersectionObserver(function(list){
-list.forEach(function(e){
-if(!e.isIntersecting) return;
-run(e.target);
-co.unobserve(e.target);
-});
-}, { threshold: 0.5 });
-counters.forEach(function(el ){ co.observe(el); });
+
 })();
