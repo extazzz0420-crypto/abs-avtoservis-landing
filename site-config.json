@@ -4,8 +4,12 @@
   "index_allowed": false,
   "max_enabled": false,
   "max_ready": false,
+  "max_profile_url": "",
+  "max_bot_username": "",
   "telegram_confirmed": true,
   "telegram_bot": "abs_auto34_bot",
   "phone_main": "79370854888",
-  "phone_text_max": 3
+  "phone_text_max": 4,
+  "lead_mode": "transfer",
+  "api_base": ""
 }
