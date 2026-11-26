@@ -11,7 +11,7 @@
 <link rel="preload" href="assets/fonts/onest-site-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/unbounded-site-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles/tokens.css">
-<link rel="stylesheet" href="styles/v8.css?v=8">
+<link rel="stylesheet" href="styles/v8.css?v=9">
 </head>
 <body>
 <a class="skip" href="#main">Перейти к содержимому</a>
@@ -149,7 +149,7 @@
             </g>
             <circle cx="240" cy="240" r="6.5" fill="#bf1a21"/>
             <circle cx="240" cy="240" r="2.6" fill="#fff"/>
-            <text class="g-num" x="240" y="28" text-anchor="middle">0&#176;</text>
+            <text class="g-num" x="240" y="78" text-anchor="middle">0&#176;</text>
             <text class="g-num" x="44" y="244">&#8722;1,5&#176;</text>
             <text class="g-num" x="436" y="244" text-anchor="end">+1,5&#176;</text>
             <text transform="rotate(-90 20 240)" x="20" y="240" text-anchor="middle">РАЗВАЛ</text>
@@ -322,8 +322,8 @@
                 <span class="chan__box"><span class="chan__t">MAX</span></span>
               </label>
             </div>
-            <p class="lead__hint" id="chan-hint">Ответим там, где удобнее. В MAX — на номер, который вы оставите.</p>
-            <p class="lead__chan" id="lead-chan" hidden>В&nbsp;MAX — на номер, который вы оставите.</p>
+            <p class="lead__hint" id="chan-hint">Ответим там, где удобнее. Выбор MAX попадёт в заявку.</p>
+            <p class="lead__chan" id="lead-chan" hidden>Вы выбрали MAX — отметим это в заявке.</p>
 
             <details class="lead__more">
               <summary>Добавить автомобиль, удобное время и имя</summary>
@@ -379,7 +379,7 @@
             <h3 id="lead-done-title">Заявка у нас</h3>
             <p class="lead__no" id="lead-no" hidden></p>
             <p id="lead-done-message"></p>
-            <p class="lead__chan" id="lead-chan-done" hidden>Ответим в&nbsp;MAX на номер, который вы оставили.</p>
+            <p class="lead__chan" id="lead-chan-done" hidden>Вы выбрали MAX — менеджер увидит это в заявке.</p>
             <div class="lead__acts" id="lead-messengers" hidden></div>
             <p class="lead__note">Услуга уже в заявке — заново рассказывать не придётся.</p>
             <p class="lead__note">Заявка — ещё не запись: время согласуем с вами.</p>
@@ -392,7 +392,6 @@
             <div class="lead__acts">
               <button class="btn btn--main" type="button" id="lead-copy"><span>Скопировать текст заявки</span></button>
               <a class="btn btn--ghost" href="https://t.me/abs_auto34_bot?start=src_site_form" data-tg="form-transfer" target="_blank" rel="noopener">Открыть Telegram</a>
-              <span id="lead-max-slot"></span>
             </div>
             <p class="lead__note" id="lead-copy-note">Вставьте скопированный текст в сообщение и отправьте.</p>
           </div>
@@ -590,7 +589,8 @@
         <p class="sec__lead">Восемь вопросов, которые задают чаще всего.</p>
       </header>
 
-      <div class="faq reveal">
+      <div class="faq-wrap">
+        <div class="faq reveal">
         <details>
           <summary><span>Где вы находитесь и как доехать?</span><svg class="faq__m" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
           <p>Волгоград, Дзержинский район, ул. Полоненко, 15Б, пос. Ангарский. Ориентир — ул. Раздольная. Маршрут есть в Яндекс Картах и 2ГИС.</p>
@@ -623,6 +623,17 @@
           <summary><span>Как оплатить?</span><svg class="faq__m" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
           <p>Картой, наличными или по QR-коду. Компаниям — безнал.</p>
         </details>
+        </div>
+
+        <aside class="faq-cta reveal" style="--i:1" aria-labelledby="faq-cta-title">
+          <h3 class="faq-cta__title" id="faq-cta-title">Не нашли ответ?</h3>
+          <p class="faq-cta__text">Опишите ситуацию — бот уточнит детали и предложит время.</p>
+          <a class="btn btn--main faq-cta__btn" href="#lead" data-form="faq">
+            <span>Оставить заявку</span>
+            <svg class="i" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="faq-cta__tg" href="https://t.me/abs_auto34_bot?start=src_site_faq" data-tg="faq" target="_blank" rel="noopener">Спросить в Telegram</a>
+        </aside>
       </div>
     </div>
   </section>
@@ -679,7 +690,7 @@
   <a class="btn btn--ghost" href="tel:+79370854888" data-tel="mobile">Позвонить</a>
 </div>
 
-<script src="form.js?v=8" defer></script>
-<script src="motion.js?v=8" defer></script>
+<script src="form.js?v=9" defer></script>
+<script src="motion.js?v=9" defer></script>
 </body>
 </html>

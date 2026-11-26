@@ -4,7 +4,7 @@ var F = document.getElementById('lead-form');
 if(!F) return;
 var D = document, q = function(i ){ return D.getElementById(i); };
 var API = '/api/abs/v1', CONSENT = 'site-consent-v2';
-var base = API, mode = 'transfer', step = 1, code = null, chosen = '', busy = false, rid = null, maxProfile = '', channel = 'telegram';
+var base = API, mode = 'transfer', step = 1, code = null, chosen = '', busy = false, rid = null, channel = 'telegram', startSent = false;
 var steps = F.querySelectorAll('[data-step-indicator]');
 var panes = F.querySelectorAll('.lead__pane');
 var chips = F.querySelectorAll('.chip[data-service-code]');
@@ -28,7 +28,7 @@ var a = D.createElement('a');
 a.href = 'tel:+79370854888';
 a.dataset.tel = 'form-error';
 a.textContent = '8-937-085-48-88';
-stt.append(D.createTextNode(' '), a);
+stt.append(D.createTextNode(' '), a, D.createTextNode('.'));
 }
 function err(field, text){
 var i = q(field), b = q(field + '-error');
@@ -50,7 +50,6 @@ var forced = /(^|\.)github\.io$/i.test(location.hostname);
 fetch('site-config.json', { cache: 'no-store' })
 .then(function(r ){ return r.ok ? r.json() : null; })
 .then(function(c ){
-if(c && c.max_profile_url) maxProfile = safeUrl(c.max_profile_url) || '';
 if(!forced && c && c.lead_mode === 'api') applyMode('api', c.api_base || '');
 else applyMode('transfer');
 })
@@ -64,6 +63,12 @@ Object.assign(body, extra || {});
 try {
 fetch(base + '/event', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), keepalive: true });
 } catch(e) {}
+}
+// Ровно одно событие form_start на первый контакт: started-флаг на весь файл.
+function startForm(block){
+if(startSent || mode !== 'api') return;
+startSent = true;
+track('form_start', block ? { block: block } : null);
 }
 function setStep(n, focus){
 step = n;
@@ -120,9 +125,13 @@ if(el.classList.contains('sit')){
 toLead();
 setTimeout(function( ){ pIn.focus({ preventScroll: true }); }, less ? 0 : 260);
 }
-if(mode === 'api') track('form_start', { block: el.classList.contains('sit') ? 'situation' : 'chip' });
+startForm(el.classList.contains('sit') ? 'situation' : 'chip');
 });
-F.addEventListener('focusin', function( ){ track('form_start'); }, { once: true });
+// Один старт на первый контакт: блок берём с элемента, который получил фокус.
+F.addEventListener('focusin', function(e){
+var t = e.target;
+startForm(t && t.closest ? (t.closest('.sit[data-service]') ? 'situation' : t.closest('.chip[data-service-code]') ? 'chip' : '') : '');
+}, { once: true });
 sIn.addEventListener('input', function(){
 if(sIn.value.trim() ){ chosen = ''; code = null; paint(); err('lead-service'); }
 });
@@ -160,7 +169,7 @@ var box = q('lead-messengers'), n = 0;
 box.replaceChildren();
 // Кнопка «Продолжить в Telegram» — только при выбранном канале Telegram.
 var list = channel === 'max'
-  ? [['max_url', 'Продолжить в MAX', 'max']]
+  ? []
   : [['telegram_url', 'Продолжить в Telegram', 'telegram']];
 list.forEach(function(c){
 var href = safeUrl(m && m[c[0]]);
@@ -228,24 +237,8 @@ else fallback(area);
 copyBtn.addEventListener('click', copyText);
 var tgCopy = q('lead-done-transfer').querySelector('a[data-tg]');
 if(tgCopy) tgCopy.addEventListener('click', copyText);
-function transferMax(){
-var slot = q('lead-max-slot');
-if(!slot) return;
-slot.replaceChildren();
-if(!maxProfile) return;
-var a = D.createElement('a');
-a.className = 'btn btn--ghost';
-a.href = maxProfile;
-a.target = '_blank';
-a.rel = 'noopener';
-a.dataset.max = 'form-transfer';
-a.textContent = 'Открыть MAX';
-a.addEventListener('click', function( ){ track('messenger_click', { src: 'max' }); });
-slot.append(a);
-}
 function submitTransfer( ){
 q('lead-text').value = buildText();
-transferMax();
 showDone('transfer');
 }
 function setBusy(v){
@@ -267,7 +260,7 @@ consent: { pd: ok.checked, ads: false, text_version: CONSENT },
 website: q('lead-website').value
 };
 if(code && /^[a-z0-9_]{2,64}$/.test(code)) body.service_code = code;
-if(channel === 'max') body.comment = 'Прошу связаться в MAX.';
+if(channel === 'max') body.comment = 'Клиент выбрал ответ в MAX.';
 if(Object.keys(utm).length) body.utm = utm;
 if(ref && /^[A-Za-z0-9_-]{4,32}$/.test(ref)) body.ref = ref;
 return body;
@@ -277,11 +270,9 @@ var data = res.data || {}, fields = data.fields || {};
 if(res.ok && data.ok === true){
 var dup = data.status === 'duplicate';
 messengers(data.messenger);
-// Серверное сообщение с обещанием звонка на экран не выводим (copy.md §3): показываем строки канала.
-var msg = data.message || '';
-if(/свяжемся|перезвон|позвон/i.test(msg)) msg = '';
-if(dup) msg = 'Повторно отправлять не нужно: номер заявки тот же.';
-else if(!msg) msg = channel === 'max' ? '' : 'Продолжим в Telegram: уточним детали и предложим время.';
+// Серверное поле message на экран не выводится (copy.md §3): только строки канона.
+var msg = dup ? 'Повторно отправлять не нужно: номер заявки тот же.'
+  : (channel === 'max' ? '' : 'Продолжим в Telegram: уточним детали и предложим время.');
 showDone('api', dup ? 'Заявка уже у нас' : 'Заявка у нас', data.lead_no || '', msg);
 track('lead_accepted', { status: data.status || 'accepted', scenario: code || 'manual' });
 rid = null;
@@ -289,14 +280,16 @@ return;
 }
 if(res.status === 422){
 if(fields.service_code){
-st('Эта позиция прайса обновилась. Выберите работу заново.', true);
+err('lead-service', 'Эта позиция прайса обновилась. Выберите работу заново.');
 code = null;
 chosen = '';
 paint();
 setStep(1, true);
+track('form_error', { reason: 'validation' });
 rid = newId();
 return;
 }
+if(fields.service) setStep(1, true);
 var map = { phone: 'lead-phone', name: 'lead-name', car: 'lead-car', service: 'lead-service', wish_time: 'lead-time', consent: 'lead-consent', consent_pd: 'lead-consent' };
 var first = null;
 Object.keys(fields).forEach(function(k){
@@ -305,7 +298,7 @@ var c = fields[k];
 var node = err(map[k], c === 'required' ? 'Заполните поле' : c === 'too_long' ? 'Слишком длинное значение' : 'Проверьте значение');
 if(node && !first) first = node;
 });
-st(data.message || 'Проверьте выделенные поля и отправьте ещё раз.', true);
+st('Проверьте выделенные поля и отправьте ещё раз.', true);
 if(first) first.focus({ preventScroll: true });
 track('form_error', { reason: 'validation' });
 rid = newId();
@@ -313,7 +306,7 @@ return;
 }
 if(res.status === 429){
 var wait = Number(data.retry_after) > 0 ? ' Повторить можно через ' + Number(data.retry_after) + ' с.' : '';
-st((data.message || 'Слишком много заявок. Позвоните нам или попробуйте позже.') + wait, true, true);
+st('Слишком много заявок. Попробуйте позже.' + wait, true);
 track('form_error', { reason: 'rate_limit' });
 return;
 }
@@ -352,6 +345,7 @@ F.reset();
 ['lead-service', 'lead-phone', 'lead-consent'].forEach(function(f ){ err(f); });
 chosen = '';
 code = null;
+paint();
 rid = null;
 resetChannel();
 F.hidden = false;
