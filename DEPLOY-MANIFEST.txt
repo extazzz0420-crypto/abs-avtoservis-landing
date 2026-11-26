@@ -1,4 +1,5 @@
 .gitignore
+.nojekyll
 app.js
 assets/favicon.svg
 assets/fonts/onest-LICENSE.txt
@@ -41,9 +42,11 @@ assets/img/kuzov-1-before-800.webp
 assets/img/og-index-1200.jpg
 assets/img/og-kuzov-1200.jpg
 chat.js
+form.js
 index.html
 kuzov.html
 kuzov/index.html
+motion.js
 order.html
 order.js
 prices-fallback.js
@@ -54,4 +57,7 @@ styles/main.css
 styles/order.css
 styles/site.css
 styles/tokens.css
+styles/v6.css
+styles/v7.css
+styles/v8.css
 zapis.html

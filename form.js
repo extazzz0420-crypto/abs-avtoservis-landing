@@ -4,7 +4,7 @@ var F = document.getElementById('lead-form');
 if(!F) return;
 var D = document, q = function(i ){ return D.getElementById(i); };
 var API = '/api/abs/v1', CONSENT = 'site-consent-v2';
-var base = API, mode = 'transfer', step = 1, code = null, chosen = '', busy = false, rid = null, maxProfile = '', channel = '';
+var base = API, mode = 'transfer', step = 1, code = null, chosen = '', busy = false, rid = null, maxProfile = '', channel = 'telegram';
 var steps = F.querySelectorAll('[data-step-indicator]');
 var panes = F.querySelectorAll('.lead__pane');
 var chips = F.querySelectorAll('.chip[data-service-code]');
@@ -96,11 +96,21 @@ err('lead-service');
 paint();
 }
 function toLead( ){ q('lead').scrollIntoView({ behavior: sb(), block: 'start' }); }
-function setChannel(v){
-channel = v === 'max' ? 'max' : '';
-var n = q('lead-chan');
+// Канал ответа — радиогруппа в шаге 2. MAX здесь выбор, а не ссылка: ни href, ни data-max.
+var chanInputs = F.querySelectorAll('input[name="reply_channel"]');
+function readChannel(){
+var on = F.querySelector('input[name="reply_channel"]:checked');
+channel = on && on.value === 'max' ? 'max' : 'telegram';
+var n = q('lead-chan'), hint = q('chan-hint');
+if(hint) hint.hidden = channel === 'max';
 if(n) n.hidden = channel !== 'max';
+return channel;
 }
+function resetChannel(){
+chanInputs.forEach(function(r){ r.checked = r.value === 'telegram'; });
+readChannel();
+}
+chanInputs.forEach(function(r){ r.addEventListener('change', readChannel); });
 D.addEventListener('click', function(e){
 var el = e.target.closest && e.target.closest('.chip[data-service-code], .sit[data-service]');
 if(!el || !F) return;
@@ -148,7 +158,11 @@ return false;
 function messengers(m){
 var box = q('lead-messengers'), n = 0;
 box.replaceChildren();
-[['telegram_url', 'Продолжить в Telegram', 'telegram'], ['max_url', 'Продолжить в MAX', 'max']].forEach(function(c){
+// Кнопка «Продолжить в Telegram» — только при выбранном канале Telegram.
+var list = channel === 'max'
+  ? [['max_url', 'Продолжить в MAX', 'max']]
+  : [['telegram_url', 'Продолжить в Telegram', 'telegram']];
+list.forEach(function(c){
 var href = safeUrl(m && m[c[0]]);
 if(!href) return;
 var a = D.createElement('a');
@@ -165,7 +179,7 @@ box.hidden = !n;
 }
 function showDone(kind, title, no, text){
 var dTitle = q('lead-done-title'), num = q('lead-no'), msg = q('lead-done-message'), box = q('lead-done');
-dTitle.textContent = title;
+if(title) dTitle.textContent = title;
 num.textContent = no ? 'Номер заявки: ' + no : '';
 num.hidden = !no;
 msg.textContent = text || '';
@@ -180,15 +194,17 @@ st('');
 box.focus({ preventScroll: true });
 box.scrollIntoView({ behavior: sb(), block: 'center' });
 }
+// Шаблон из copy.md §3: без эмодзи, «Ответить в» выводится всегда, телефон до него.
 function buildText(){
 var t = ['Заявка с сайта · АБС-Автосервис'];
-t.push('🔧 Услуга: ' + (chosen || sIn.value.trim()).slice(0, 120));
+t.push('Услуга: ' + (chosen || sIn.value.trim()).slice(0, 120));
 var car = cut(q('lead-car').value, 60), when = cut(q('lead-time').value, 80), name = cut(q('lead-name').value, 80);
-if(car) t.push('🚗 Автомобиль: ' + car);
-if(when) t.push('🕐 Когда удобно: ' + when);
-if(name) t.push('👤 Имя: ' + name);
-if(channel === 'max') t.push('💬 Ответить в: MAX');
-t.push('📞 Телефон: ' + pIn.value.trim(), 'Прошу подтвердить время.');
+if(car) t.push('Автомобиль: ' + car);
+if(when) t.push('Когда удобно: ' + when);
+if(name) t.push('Имя: ' + name);
+t.push('Телефон: ' + pIn.value.trim());
+t.push('Ответить в: ' + (channel === 'max' ? 'MAX' : 'Telegram'));
+t.push('Прошу подтвердить время.');
 return t.join('\n');
 }
 var copyBtn = q('lead-copy'), copyLabel = copyBtn.querySelector('span'), copyTimer = null;
@@ -229,10 +245,6 @@ slot.append(a);
 }
 function submitTransfer( ){
 q('lead-text').value = buildText();
-var lead = q('lead-transfer-lead');
-if(lead) lead.textContent = channel === 'max'
-  ? 'Скопируйте текст и отправьте его в наш Telegram — менеджер ответит в MAX.'
-  : 'Скопируйте текст и отправьте его в наш Telegram — или позвоните.';
 transferMax();
 showDone('transfer');
 }
@@ -265,9 +277,12 @@ var data = res.data || {}, fields = data.fields || {};
 if(res.ok && data.ok === true){
 var dup = data.status === 'duplicate';
 messengers(data.messenger);
-var msg = data.message || (dup ? 'Повторно отправлять не нужно: номер заявки тот же.' : '');
-if(/свяжемся|перезвон/i.test(msg)) msg = 'Заявка принята. Продолжите в Telegram — бот уточнит детали.';
-showDone('api', dup ? 'Заявка уже у нас' : 'Заявка принята', data.lead_no || '', msg);
+// Серверное сообщение с обещанием звонка на экран не выводим (copy.md §3): показываем строки канала.
+var msg = data.message || '';
+if(/свяжемся|перезвон|позвон/i.test(msg)) msg = '';
+if(dup) msg = 'Повторно отправлять не нужно: номер заявки тот же.';
+else if(!msg) msg = channel === 'max' ? '' : 'Продолжим в Telegram: уточним детали и предложим время.';
+showDone('api', dup ? 'Заявка уже у нас' : 'Заявка у нас', data.lead_no || '', msg);
 track('lead_accepted', { status: data.status || 'accepted', scenario: code || 'manual' });
 rid = null;
 return;
@@ -338,7 +353,7 @@ F.reset();
 chosen = '';
 code = null;
 rid = null;
-setChannel('');
+resetChannel();
 F.hidden = false;
 q('lead-done').hidden = true;
 q('lead-check').classList.remove('is-on');
@@ -351,7 +366,7 @@ setTimeout(function( ){ F.querySelector('.chip').focus({ preventScroll: true });
 D.querySelectorAll('[data-form]').forEach(function(a){
 a.addEventListener('click', function(){
 if(F.hidden) return;
-setChannel('');
+resetChannel();
 setTimeout(function(){
 var t = a.dataset.leadFocus === 'service' ? sIn : step === 1 ? F.querySelector('.chip') : pIn;
 if(a.dataset.leadFocus === 'service' && step !== 1) setStep(1, false);
@@ -363,15 +378,7 @@ D.addEventListener('click', function(e){
 var a = e.target.closest && e.target.closest('a[data-tel]');
 if(a) track('tel_click', { src: a.dataset.tel });
 });
-var maxBtn = q('hero-max');
-if(maxBtn) maxBtn.addEventListener('click', function(){
-setChannel('max');
-toLead();
-setTimeout(function( ){
-var t = step === 1 ? F.querySelector('.chip') : pIn;
-if(t) t.focus({ preventScroll: true });
-}, less ? 0 : 420);
-});
 initMode();
+readChannel();
 setStep(1, false);
 })();
