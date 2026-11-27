@@ -237,7 +237,7 @@ button { font: inherit; color: inherit; }
 .facts__in {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px; background: var(--rule);
-  max-width: none; padding-inline: 0;
+  max-width: var(--shell); margin-inline: auto; padding-inline: 0;
 }
 .fact { display: flex; flex-direction: column; gap: 4px; padding: 18px clamp(14px, 1.6vw, 24px) 20px; background: var(--panel); }
 .fact:first-child { padding-left: var(--gut); }
