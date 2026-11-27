@@ -1,0 +1,174 @@
+/* АБС-Автосервис — форма заявки: общий компонент главной и страницы кузовного.
+   Вынесен из v8.css как есть; токены — свои алиасы, чтобы страницы с разными
+   наборами токенов выглядели одинаково. */
+
+:root {
+  /* Токены формы: свои имена с фолбэками, чтобы компонент работал на страницах
+     с разными наборами токенов (главная v8 и кузовной). */
+  --lf-panel: var(--panel, #fff);
+  --lf-navy: var(--navy, #0b2f5f);
+  --lf-ink-2: var(--ink-2, #3b4857);
+  --lf-muted: var(--muted-ink, #55616f);
+  --lf-rule: var(--rule, #dde3ec);
+  --lf-ctl: var(--ctl, #78889f);
+  --lf-accent: var(--accent-ink, #a5141b);
+  --lf-mark: var(--accent, #bf1a21);
+  --lf-fg: var(--fg, #121b28);
+  --lf-fg-3: var(--fg-3, #5a6776);
+  --lf-display: var(--font-display, "Unbounded", "Onest", system-ui, sans-serif);
+  --lf-ok: var(--ok, #1d6b45);
+}
+
+/* ── Форма ──────────────────────────────────────────────────────────── */
+.leadsec { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.leadsec__head { padding-top: 18px; border-top: 1px solid var(--lf-rule); }
+.leadsec__head h2 {
+  margin-top: 10px;
+  font-family: var(--lf-display); font-size: clamp(1.55rem, 1.05rem + 1.9vw, 2.55rem);
+  font-weight: 500; line-height: 1.08; letter-spacing: -.025em; color: var(--lf-navy);
+}
+.leadsec__lede { margin-top: 12px; max-width: 40ch; font-size: 16px; line-height: 1.5; color: var(--lf-muted); }
+
+.lead { background: var(--lf-panel); border: 1px solid var(--lf-rule); padding: clamp(16px, 2.2vw, 28px); }
+.lead__top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.lead__name { font-family: var(--lf-display); font-size: 16px; font-weight: 500; color: var(--lf-navy); }
+.lead__meta { font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--lf-muted); }
+.lead__steps { display: flex; gap: 22px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--lf-rule); }
+.lead__steps li { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--lf-muted); }
+.lead__steps b { font-weight: 700; font-variant-numeric: tabular-nums; }
+.lead__steps li[aria-current="step"] { color: var(--lf-navy); }
+.lead__steps li.is-done b { color: var(--lf-ok, #1d6b45); }
+
+.lead__pane { border: 0; margin: 18px 0 0; padding: 0; min-width: 0; }
+.lead__pane legend {
+  float: left; width: 100%; padding: 0; margin-bottom: 6px;
+  font-family: var(--lf-display); font-size: 19px; font-weight: 500; color: var(--lf-navy);
+}
+.lead__pane legend + * { clear: both; }
+.lead__hint { font-size: 14px; line-height: 1.45; color: var(--lf-muted); }
+.lead__chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.chip {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  min-height: 56px; padding: 10px 12px;
+  background: #fff; border: 1px solid var(--lf-ctl); border-radius: 0;
+  font-size: 14px; line-height: 1.25; text-align: left; cursor: pointer;
+  transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.chip:hover { border-color: var(--lf-navy); }
+.chip[aria-pressed="true"] { border-color: var(--lf-navy); box-shadow: inset 0 0 0 1px var(--lf-navy); color: var(--lf-navy); font-weight: 600; }
+.chip__ok { opacity: 0; color: var(--lf-mark); transition: opacity var(--t-fast) var(--ease); }
+.chip[aria-pressed="true"] .chip__ok { opacity: 1; }
+
+.field { margin-top: 14px; }
+.field__label {
+  display: block; margin-bottom: 6px;
+  font-size: 13px; font-weight: 600; color: var(--lf-ink-2);
+}
+.field__label span { font-weight: 400; color: var(--lf-muted); }
+.field input {
+  width: 100%; min-height: 52px; padding: 0 14px;
+  background: #fff; border: 1px solid var(--lf-ctl); border-radius: 0;
+  font: inherit; font-size: 16px; color: var(--lf-fg);
+}
+.field input::placeholder { color: var(--lf-fg-3, #5a6776); opacity: 1; }
+.field input:focus { border-color: var(--lf-navy); }
+.field input[aria-invalid="true"] { border-color: var(--lf-accent); box-shadow: inset 0 0 0 1px var(--lf-accent); }
+.field__err { display: block; margin-top: 6px; font-size: 13px; color: var(--lf-accent); }
+.field__pair { display: grid; gap: 0 12px; }
+.lead__more { margin-top: 12px; border-top: 1px solid var(--lf-rule); border-bottom: 1px solid var(--lf-rule); }
+.lead__more summary {
+  display: flex; align-items: center; min-height: 48px;
+  font-size: 13.5px; color: var(--lf-navy); cursor: pointer; list-style: none;
+}
+.lead__more summary::-webkit-details-marker { display: none; }
+.lead__more summary::after { content: "+"; margin-left: auto; font-size: 18px; color: var(--lf-muted); }
+.lead__more[open] summary::after { content: "–"; }
+.lead__more .field__pair { padding-bottom: 14px; }
+
+#chan-legend { margin-top: 16px; }
+.chan { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 6px; }
+.chan__opt { position: relative; display: block; }
+.chan__opt input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.chan__box {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 52px; padding: 0 14px;
+  background: #fff; border: 1px solid var(--lf-ctl);
+  font-size: 14.5px; font-weight: 600; cursor: pointer;
+  transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.chan__box::before {
+  content: ""; width: 14px; height: 14px; flex: none;
+  border: 1px solid var(--lf-ctl); border-radius: 50%;
+}
+.chan__opt input:checked + .chan__box { border-color: var(--lf-navy); box-shadow: inset 0 0 0 1px var(--lf-navy); color: var(--lf-navy); background: #f6f8fb; }
+.chan__opt input:checked + .chan__box::before { border-color: var(--lf-navy); background: var(--lf-navy); box-shadow: inset 0 0 0 3px #f6f8fb; }
+.chan__opt input:focus-visible + .chan__box { outline: 3px solid var(--lf-navy); outline-offset: 2px; }
+.lead__chan { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--lf-rule); background: #f6f8fb; font-size: 13px; line-height: 1.45; color: var(--lf-ink-2); }
+.lead__chan b { color: var(--lf-navy); }
+
+.check { display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; font-size: 13.5px; line-height: 1.4; cursor: pointer; }
+.check input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--lf-navy); }
+.check input[aria-invalid="true"] { outline: 2px solid var(--lf-accent); outline-offset: 2px; }
+.check__err { display: block; margin-top: 6px; font-size: 13px; color: var(--lf-accent); }
+.lead__alt { margin-top: 10px; font-size: 13px; color: var(--lf-muted); }
+.lead__alt a { display: inline-block; padding-block: 4px; color: var(--lf-navy); text-decoration: underline; text-decoration-color: var(--lf-rule); text-underline-offset: 3px; }
+.lead__alt a:hover { text-decoration-color: var(--lf-navy); }
+
+.lead__acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.lead__acts .btn--main { flex: 1 1 220px; }
+.lead__status { margin-top: 12px; font-size: 13.5px; line-height: 1.45; color: var(--lf-ink-2); }
+.lead__status.is-err { color: var(--lf-accent); font-weight: 600; }
+.lead__status:empty { display: none; }
+.hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.hp input { position: absolute; inset: 0; width: 1px; height: 1px; opacity: 0; }
+
+.lead__picked { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 10px; padding: 10px 12px; background: #f6f8fb; border: 1px solid var(--lf-rule); font-size: 13.5px; color: var(--lf-ink-2); }
+.lead__picked b { color: var(--lf-navy); }
+.lead__picked button { min-height: 32px; padding: 0 8px; background: none; border: 0; border-bottom: 1px solid var(--lf-rule); color: var(--lf-navy); font-size: 13px; cursor: pointer; }
+.lead__picked button:hover { border-bottom-color: var(--lf-navy); }
+
+/* Экраны результата */
+.lead__done { padding-top: 4px; }
+.lead__done h3 { font-family: var(--lf-display); font-size: 21px; font-weight: 500; line-height: 1.2; color: var(--lf-navy); }
+.lead__done p { margin-top: 10px; font-size: 15px; line-height: 1.5; color: var(--lf-ink-2); }
+.lead__done p:empty { display: none; }
+.lead__check { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--lf-rule); color: var(--lf-ok, #1d6b45); }
+.lead__check svg { width: 22px; height: 22px; opacity: .25; }
+.lead__check.is-on svg { opacity: 1; }
+.lead__no { font-weight: 700; color: var(--lf-navy); font-variant-numeric: tabular-nums; }
+.lead__note { font-size: 13px !important; color: var(--lf-muted) !important; }
+.lead__text {
+  width: 100%; margin-top: 12px; padding: 12px;
+  border: 1px solid var(--lf-ctl); border-radius: 0; background: #fbfcfe;
+  font-family: "Onest", monospace; font-size: 14px; line-height: 1.5; color: var(--lf-fg);
+  resize: vertical;
+}
+.lead__foot { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--lf-rule); }
+.lead__foot a, .lead__foot button {
+  display: inline-flex; align-items: center; min-height: 44px;
+  background: none; border: 0; padding: 0;
+  font-size: 13.5px; font-weight: 600; color: var(--lf-navy); cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--lf-rule); text-underline-offset: 4px;
+}
+.lead__foot a:hover, .lead__foot button:hover { text-decoration-color: var(--lf-navy); }
+
+/* Адаптив формы */
+@media (max-width: 900px) {
+  .leadsec { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .lead__chips { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Чипы с пояснением: заголовок и подпись в одну колонку, галочка справа */
+.chip { display: grid; grid-template-columns: minmax(0, 1fr) 15px; align-items: center; gap: 1px 8px; }
+.chip__t { grid-column: 1; }
+.chip__n { grid-column: 1; font-size: 12px; font-weight: 400; line-height: 1.3; color: var(--lf-muted); }
+.chip__ok { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+
+/* Бейдж «скоро» у канала, который ещё не подключён (MAX) */
+.soon {
+  padding: 2px 5px; border: 1px solid var(--lf-rule);
+  font-size: 9.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--lf-muted);
+}

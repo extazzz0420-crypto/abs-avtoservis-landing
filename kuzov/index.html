@@ -21,7 +21,8 @@
 <link rel="stylesheet" href="../styles/tokens.css">
 <link rel="preload" href="../assets/fonts/unbounded-site-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/onest-site-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../styles/kuzov.css?v=1">
+<link rel="stylesheet" href="../styles/kuzov.css?v=2">
+<link rel="stylesheet" href="../styles/leadform.css?v=1">
 </head>
 <body>
 
@@ -29,7 +30,7 @@
   <div class="shell top__in">
     <a class="logo" href="../" aria-label="АБС-Автосервис — на главную"><img src="../assets/img/abs-logo-dark-240.webp" width="240" height="128" alt="АБС-Автосервис"></a>
     <a class="top__phone" href="tel:+79370854888" data-tel="header">8-937-085-48-88</a>
-    <a class="btn btn--ghost btn--sm" href="../#contacts">Записаться</a>
+    <a class="btn btn--ghost btn--sm" href="#lead">Записаться</a>
   </div>
 </header>
 
@@ -42,6 +43,7 @@
         <p class="hero__lead">Свой кузовной цех в Дзержинском районе с 2009 года. Ремонт и покраска, удаление вмятин без покраски. Скажем, сколько будет стоить, по фото — до поездки в сервис.</p>
         <div class="hero__cta">
           <a class="btn" id="tg-hero" href="https://t.me/abs_auto34_bot?start=src_kuzov_hero" target="_blank" rel="noopener" data-tg="kuzov-hero">Прислать фото в Telegram</a>
+          <button class="btn btn--msg-ghost" type="button" data-max-stub aria-label="MAX ещё не подключён: выбор ответа в MAX — в заявке"><svg class="i" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><path d="M7.6 15.8V8.4l4.4 4.8 4.4-4.8v7.4"/></svg><span>MAX</span><span class="soon">скоро</span></button>
         </div>
         <p class="hero__note">Оценка по фото предварительная: точную сумму назовём после осмотра. Нет Telegram? Позвоните: <a href="tel:+79370854888" data-tel="hero-idle">8-937-085-48-88</a>.</p>
         <ul class="facts">
@@ -53,48 +55,212 @@
 
       <figure class="ba">
         <div class="ba__pair">
-                <div class="ba__item">
-                  <picture>
-                    <source type="image/avif" srcset="../assets/img/kuzov-1-before-400.avif 400w, ../assets/img/kuzov-1-before-800.avif 800w" sizes="(min-width: 44rem) 34rem, 92vw">
-                    <img src="../assets/img/kuzov-1-before-800.webp" srcset="../assets/img/kuzov-1-before-400.webp 400w, ../assets/img/kuzov-1-before-800.webp 800w" sizes="(min-width: 44rem) 34rem, 92vw" width="800" height="400" alt="УАЗ после ДТП: смято переднее крыло, дверь и капот" decoding="async" fetchpriority="high">
-                  </picture>
-                  <span class="ba__tag">До</span>
-                </div>
-                <div class="ba__item">
-                  <picture>
-                    <source type="image/avif" srcset="../assets/img/kuzov-1-after-400.avif 400w, ../assets/img/kuzov-1-after-800.avif 800w" sizes="(min-width: 44rem) 34rem, 92vw">
-                    <img src="../assets/img/kuzov-1-after-800.webp" srcset="../assets/img/kuzov-1-after-400.webp 400w, ../assets/img/kuzov-1-after-800.webp 800w" sizes="(min-width: 44rem) 34rem, 92vw" width="800" height="400" alt="Тот же УАЗ после правки, сварки и покраски" loading="lazy" decoding="async">
-                  </picture>
-                  <span class="ba__tag ba__tag--ok">После</span>
-                </div>
-              </div>
-              <figcaption>Кузовной ремонт после ДТП: правка, сварка, покраска. Фото сервиса.</figcaption>
-            </figure>
+          <div class="ba__item">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/kuzov-before-wide.avif">
+              <img src="../assets/img/kuzov-before-wide.webp" width="600" height="300" alt="УАЗ до ремонта: смяты переднее крыло, дверь и порог" decoding="async" fetchpriority="high">
+            </picture>
+            <span class="ba__tag">До</span>
+          </div>
+          <div class="ba__item">
+            <picture>
+              <source type="image/avif" srcset="../assets/img/kuzov-after-wide.avif">
+              <img src="../assets/img/kuzov-after-wide.webp" width="600" height="300" alt="Тот же УАЗ после правки, сварки и покраски" loading="lazy" decoding="async">
+            </picture>
+            <span class="ba__tag ba__tag--ok">После</span>
+          </div>
+        </div>
+        <figcaption>Один и тот же левый борт: удар в передний угол, потом правка, сварка и покраска. Фото сервиса.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="band">
-    <div class="shell">
-      <h2>Что прислать, чтобы назвать цену</h2>
-      <p class="lead">Три-четыре фото и одно сообщение. Этого хватает, чтобы назвать диапазон и не гонять вас на осмотр вслепую.</p>
-      <ol class="steps">
-        <li><span><b>Повреждение целиком</b><small>С расстояния 1–2 метра, чтобы было видно деталь и соседние.</small></span></li>
-        <li><span><b>То же место крупно</b><small>Вмятина, скол, царапина — как есть, без подготовки.</small></span></li>
-        <li><span><b>Вторая сторона или соседняя деталь</b><small>Если задета — чтобы не оказалось «а ещё вот тут».</small></span></li>
-        <li><span><b>Модель, год и что случилось одной строкой</b><small>«парковка», «ДТП», «град» — этого достаточно.</small></span></li>
-        <li><span><b>Направление или выплата от страховой</b><small>Если есть — напишите, от этого зависит порядок.</small></span></li>
-      </ol>
-      <div class="hero__cta">
-        <a class="btn" id="tg-send" href="https://t.me/abs_auto34_bot?start=src_kuzov_send" target="_blank" rel="noopener" data-tg="kuzov-send">Открыть Telegram и приложить фото</a>
+  <section class="band" id="lead" aria-labelledby="lead-title">
+    <div class="shell leadsec">
+      <div class="leadsec__head reveal">
+        <p class="eyebrow">Цена по фото</p>
+        <h2 id="lead-title">Скажем цену по фото</h2>
+        <p class="leadsec__lede">Заполните два поля: что случилось и телефон. После отправки откроется Telegram — приложите 3–4 фото, и мы назовём диапазон. Точную сумму — после осмотра.</p>
+
       </div>
-      <p class="hero__note">Отвечаем ежедневно 8:00–20:00.</p>
+
+      <div class="lead reveal" id="lead-card" data-mode="transfer" data-config="../site-config.json" data-preselect="Кузовной ремонт" data-preselect-code="body_wing_repair_paint" style="--i:1">
+        <form id="lead-form" novalidate data-consent-version="site-consent-v2">
+          <div class="lead__top">
+            <p class="lead__name">Заявка на кузовной ремонт</p>
+            <p class="lead__meta">2 шага · услуга уже выбрана</p>
+          </div>
+
+          <ol class="lead__steps">
+            <li data-step-indicator="1" aria-current="step"><b>01</b> Ситуация</li>
+            <li data-step-indicator="2"><b>02</b> Контакты</li>
+          </ol>
+
+          <fieldset class="lead__pane" data-step="1">
+            <legend>Что нужно сделать?</legend>
+            <p class="lead__hint" id="step1-hint">Ситуация уже отмечена. Проверьте её или уточните словами.</p>
+            <div class="lead__chips" role="group" aria-labelledby="step1-hint">
+                <button class="chip" type="button" aria-pressed="false" data-service="Кузовной ремонт" data-service-code="body_wing_repair_paint">
+                  <span class="chip__t">Кузовной ремонт</span><span class="chip__n">крыло, дверь, порог</span>
+                  <svg class="chip__ok" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+                </button>
+                <button class="chip" type="button" aria-pressed="false" data-service="Ремонт после ДТП">
+                  <span class="chip__t">После ДТП</span><span class="chip__n">удар, несколько деталей</span>
+                  <svg class="chip__ok" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+                </button>
+                <button class="chip" type="button" aria-pressed="false" data-service="Удаление вмятины без покраски" data-service-code="dent_removal_up_to_3cm">
+                  <span class="chip__t">Вмятина без покраски</span><span class="chip__n">до 3 см</span>
+                  <svg class="chip__ok" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+                </button>
+                <button class="chip" type="button" aria-pressed="false" data-service="Покраска детали">
+                  <span class="chip__t">Покраска детали</span><span class="chip__n">бампер, деталь целиком</span>
+                  <svg class="chip__ok" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+                </button>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="lead-service">Своими словами <span>необязательно, если выбрали ситуацию</span></label>
+              <input id="lead-service" name="service" type="text" maxlength="120" autocomplete="off" placeholder="Например, царапина на двери после парковки" aria-describedby="lead-service-error">
+              <span class="field__err" id="lead-service-error" hidden></span>
+            </div>
+
+            <div class="lead__acts">
+              <button class="btn btn--main" type="button" id="lead-next">
+                <span>Далее</span>
+                <svg class="i" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset class="lead__pane" data-step="2" hidden>
+            <legend>Как с вами связаться</legend>
+            <p class="lead__hint">Телефон нужен, чтобы согласовать время и уточнить детали.</p>
+
+            <p class="lead__picked" id="lead-picked" hidden>Выбрано: <b id="lead-picked-name"></b><button type="button" id="lead-edit">Изменить</button></p>
+
+            <div class="field">
+              <label class="field__label" for="lead-phone">Телефон <span>обязательно</span></label>
+              <input id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00" aria-describedby="lead-phone-error">
+              <span class="field__err" id="lead-phone-error" hidden></span>
+            </div>
+
+            <p class="field__label" id="chan-legend">Где удобнее ответить</p>
+            <div class="chan" role="radiogroup" aria-labelledby="chan-legend">
+              <label class="chan__opt">
+                <input type="radio" name="reply_channel" value="telegram" checked>
+                <span class="chan__box"><span class="chan__t">Telegram</span></span>
+              </label>
+              <label class="chan__opt">
+                <input type="radio" name="reply_channel" value="max" data-max-choice="1">
+                <span class="chan__box"><span class="chan__t">MAX</span></span>
+              </label>
+            </div>
+            <p class="lead__hint" id="chan-hint">Ответим там, где удобнее. Выбор MAX попадёт в заявку.</p>
+            <p class="lead__chan" id="lead-chan" hidden>Вы выбрали MAX — отметим это в заявке.</p>
+
+            <details class="lead__more">
+              <summary>Добавить автомобиль, удобное время и имя</summary>
+              <div class="field__pair">
+                <div class="field">
+                  <label class="field__label" for="lead-car">Автомобиль</label>
+                  <input id="lead-car" name="car" type="text" maxlength="120" autocomplete="off" placeholder="Марка, модель, год">
+                </div>
+                <div class="field">
+                  <label class="field__label" for="lead-time">Когда удобно</label>
+                  <input id="lead-time" name="wish_time" type="text" maxlength="80" autocomplete="off" placeholder="Завтра после 17:00">
+                </div>
+                <div class="field">
+                  <label class="field__label" for="lead-name">Имя</label>
+                  <input id="lead-name" name="name" type="text" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться">
+                </div>
+              </div>
+            </details>
+
+            <label class="check" for="lead-consent">
+              <input id="lead-consent" name="consent" type="checkbox" aria-describedby="lead-consent-error">
+              <span>Согласен на обработку персональных данных</span>
+            </label>
+            <span class="check__err" id="lead-consent-error" hidden></span>
+            <p class="lead__alt"><a href="../privacy/" target="_blank" rel="noopener">Политика обработки персональных данных</a></p>
+
+            <div class="lead__acts">
+              <button class="btn btn--back" type="button" id="lead-back">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>
+                <span>Назад</span>
+              </button>
+              <button class="btn btn--main" type="submit" id="lead-send">
+                <span data-send-api hidden>Отправить заявку</span>
+                <span data-send-transfer>Собрать текст заявки</span>
+              </button>
+            </div>
+
+            <p class="lead__alt">Не хотите заполнять? Позвоните: <a href="tel:+79370854888" data-tel="form">8-937-085-48-88</a>.</p>
+
+            <p class="lead__status" id="lead-status" role="status" aria-live="polite"></p>
+          </fieldset>
+
+          <div class="hp">
+            <input id="lead-website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+          </div>
+        </form>
+
+        <div class="lead__done" id="lead-done" hidden tabindex="-1">
+          <div id="lead-done-api" hidden>
+            <p class="lead__check" id="lead-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
+            </p>
+            <h3 id="lead-done-title">Заявка у нас</h3>
+            <p class="lead__no" id="lead-no" hidden></p>
+            <p id="lead-done-message"></p>
+            <p class="lead__chan" id="lead-chan-done" hidden>Вы выбрали MAX — менеджер увидит это в заявке.</p>
+            <div class="lead__acts" id="lead-messengers" hidden></div>
+            <p class="lead__note">Услуга уже в заявке — заново рассказывать не придётся.</p>
+            <p class="lead__note">Заявка — ещё не запись: время согласуем с вами.</p>
+          </div>
+
+          <div id="lead-done-transfer" hidden>
+            <h3>Заявка собрана, но ещё не отправлена</h3>
+            <p id="lead-transfer-lead">Скопируйте текст и отправьте в Telegram — или позвоните. В тексте указано, где вам удобнее ответить.</p>
+            <textarea class="lead__text" id="lead-text" rows="8" readonly aria-label="Текст заявки"></textarea>
+            <div class="lead__acts">
+              <button class="btn btn--main" type="button" id="lead-copy"><span>Скопировать текст заявки</span></button>
+              <a class="btn btn--msg-ghost" href="https://t.me/abs_auto34_bot?start=src_kuzov_form" data-tg="form-transfer" target="_blank" rel="noopener">Открыть Telegram</a>
+            </div>
+            <p class="lead__note" id="lead-copy-note">Вставьте скопированный текст в сообщение и отправьте.</p>
+          </div>
+
+          <div class="lead__foot">
+            <a href="tel:+79370854888" data-tel="success">Позвонить</a>
+            <button type="button" id="lead-again">Оставить ещё одну заявку</button>
+          </div>
+        </div>
+      </div>
+
+      <ol class="tips">
+          <li>
+            <span class="tips__i" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3l1.4-2.2c.2-.3.5-.5.9-.5h5.4c.4 0 .7.2.9.5L17 8.5h3c.6 0 1 .4 1 1v8c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1v-8c0-.6.4-1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
+            <span><b>Повреждение целиком</b><small>С 1–2 метров, чтобы было видно деталь и соседние.</small></span>
+          </li>
+          <li>
+            <span class="tips__i" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.2"/><path d="M15 15l4.5 4.5M8 10.5h5M10.5 8v5"/></svg></span>
+            <span><b>То же место крупно</b><small>Вмятина, скол, царапина — как есть, без подготовки.</small></span>
+          </li>
+          <li>
+            <span class="tips__i" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 15.4v-2.1c0-.5.2-1 .6-1.3l1.7-1.4 2.4-3.1c.3-.4.8-.6 1.2-.6h4.3c.5 0 .9.2 1.2.6l2.4 3.1 1.7 1.4c.4.3.6.8.6 1.3v2.1"/><path d="M3.4 15.4h17.2"/><circle cx="7.3" cy="16.6" r="1.7"/><circle cx="16.7" cy="16.6" r="1.7"/></svg></span>
+            <span><b>Модель, год и что случилось</b><small>«парковка», «ДТП», «град» — одной строкой достаточно.</small></span>
+          </li>
+          <li>
+            <span class="tips__i" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4l7 2.6v5.3c0 4-2.9 7.5-7 9.3-4.1-1.8-7-5.3-7-9.3V6z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.6"/></svg></span>
+            <span><b>Направление или выплата</b><small>Если есть — скажите: от этого зависит порядок.</small></span>
+          </li>
+      </ol>
     </div>
   </section>
 
   <section>
     <div class="shell">
       <h2>Что делает кузовной цех</h2>
-      <p class="lead">Ремонт и покраска деталей, покраска бампера, удаление вмятин без покраски. Цены — «от», из прайса сервиса.</p>
+      <p class="kzp-lede">Ремонт и покраска деталей, покраска бампера, удаление вмятин без покраски. Цены — «от», из прайса сервиса.</p>
       <ul class="prices" id="prices">
         <li><span>Ремонт и покраска крыла</span><b>от 16 000 ₽</b></li>
         <li><span>Ремонт и покраска двери</span><b>от 20 000 ₽</b></li>
@@ -113,7 +279,7 @@
     <div class="shell">
       <h2>Порядок: фото → цена → осмотр → сумма</h2>
       <ol class="steps">
-        <li><span><b>Фото в Telegram</b><small>Присылаете, что есть, без подготовки.</small></span></li>
+        <li><span><b>Заявка и фото</b><small>Заполняете два поля, прикладываете 3–4 фото — как есть.</small></span></li>
         <li><span><b>Цена</b><small>Называем по фото, в рабочее время цеха.</small></span></li>
         <li><span><b>Осмотр</b><small>Смотрим деталь, крепёж и скрытые повреждения. Это единственный способ увидеть, что под бампером.</small></span></li>
         <li><span><b>Сумма до работ</b><small>Объём и стоимость согласуем до начала. Дополнительные работы — только после вашего «да».</small></span></li>
@@ -179,9 +345,10 @@
       <div class="final__grid">
         <div>
           <h2>Пришлите фото — назовём цену</h2>
-          <p class="lead">Это быстрее, чем ехать на осмотр вслепую. Фото можно сделать прямо сейчас, стоя у машины.</p>
+          <p class="kzp-lede">Это быстрее, чем ехать на осмотр вслепую. Фото можно сделать прямо сейчас, стоя у машины.</p>
           <div class="final__actions">
             <a class="btn" id="tg-final" href="https://t.me/abs_auto34_bot?start=src_kuzov_final" target="_blank" rel="noopener" data-tg="kuzov-final">Прислать фото в Telegram</a>
+          <button class="btn btn--msg-ghost" type="button" data-max-stub aria-label="MAX ещё не подключён: выбор ответа в MAX — в заявке"><svg class="i" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><path d="M7.6 15.8V8.4l4.4 4.8 4.4-4.8v7.4"/></svg><span>MAX</span><span class="soon">скоро</span></button>
           </div>
         </div>
         <dl class="contacts">
@@ -207,6 +374,8 @@
   <a class="btn btn--ghost" href="tel:+79370854888" data-tel="mobile">Позвонить</a>
 </div>
 
+<script src="../form.js?v=10" defer></script>
+<script src="../motion.js?v=10" defer></script>
 <script>
 /* Клики: Telegram и телефон уходят в abs.site_event до перехода.
    utm разбираем в объект — строку приёмник не читает. idem уникален на клик,
@@ -254,6 +423,14 @@
   document.querySelectorAll('a[data-tel]').forEach((a) => {
     a.addEventListener('click', () => send('tel_click', a));
   });
+
+  // Мобильная панель не должна закрывать форму: пока #lead на экране, она уезжает.
+  const lead = document.getElementById('lead');
+  if (lead && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      document.body.classList.toggle('at-lead', e.isIntersecting);
+    }, { threshold: 0.04 }).observe(lead);
+  }
 })();
 </script>
 </body>

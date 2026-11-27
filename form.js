@@ -7,9 +7,10 @@ var API = '/api/abs/v1', CONSENT = 'site-consent-v2';
 var base = API, mode = 'transfer', step = 1, code = null, chosen = '', busy = false, rid = null, channel = 'telegram', startSent = false;
 var steps = F.querySelectorAll('[data-step-indicator]');
 var panes = F.querySelectorAll('.lead__pane');
-var chips = F.querySelectorAll('.chip[data-service-code]');
+var chips = F.querySelectorAll('.chip[data-service]');
 var sIn = q('lead-service'), pIn = q('lead-phone'), ok = q('lead-consent'), stt = q('lead-status');
 var picked = q('lead-picked'), pName = q('lead-picked-name'), less = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var card = q('lead-card');   // настройки страницы живут на карточке, а не на форме
 var sb = function( ){ return less ? 'auto' : 'smooth'; };
 function newId( ){ if(window.crypto && crypto.randomUUID) return crypto.randomUUID().replace(/-/g, ''); return 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/x/g, function( ){ return Math.floor(Math.random()*16).toString(16); }); }
 function safeUrl(v){
@@ -47,7 +48,8 @@ if(m) m.hidden = mode !== 'api';
 }
 function initMode(){
 var forced = /(^|\.)github\.io$/i.test(location.hostname);
-fetch('site-config.json', { cache: 'no-store' })
+var cfgUrl = (card && card.dataset.config) || F.dataset.config || 'site-config.json';
+fetch(cfgUrl, { cache: 'no-store' })
 .then(function(r ){ return r.ok ? r.json() : null; })
 .then(function(c ){
 if(!forced && c && c.lead_mode === 'api') applyMode('api', c.api_base || '');
@@ -100,6 +102,13 @@ if(code) sIn.value = '';
 err('lead-service');
 paint();
 }
+// Страница услуги приходит с готовой ситуацией: клиенту не нужно выбирать её заново.
+var preService = (card && card.dataset.preselect) || F.dataset.preselect;
+if(preService){
+  chosen = String(preService).trim().slice(0, 120);
+  code = (card && card.dataset.preselectCode) || F.dataset.preselectCode || null;
+  paint();
+}
 function toLead( ){ q('lead').scrollIntoView({ behavior: sb(), block: 'start' }); }
 // Канал ответа — радиогруппа в шаге 2. MAX здесь выбор, а не ссылка: ни href, ни data-max.
 var chanInputs = F.querySelectorAll('input[name="reply_channel"]');
@@ -116,8 +125,24 @@ chanInputs.forEach(function(r){ r.checked = r.value === 'telegram'; });
 readChannel();
 }
 chanInputs.forEach(function(r){ r.addEventListener('change', readChannel); });
+// MAX ещё не подключён: кнопка не притворяется ссылкой, а открывает форму
+// и заранее ставит «ответить в MAX». Бейдж «скоро» на кнопке говорит правду.
 D.addEventListener('click', function(e){
-var el = e.target.closest && e.target.closest('.chip[data-service-code], .sit[data-service]');
+var m = e.target.closest && e.target.closest('[data-max-stub]');
+if(!m) return;
+e.preventDefault();
+var r = F.querySelector('input[name="reply_channel"][value="max"]');
+if(r){ r.checked = true; readChannel(); }
+var box = q('lead');
+if(box) box.scrollIntoView({ behavior: sb(), block: 'start' });
+setTimeout(function( ){
+  var t = F.querySelector('.chip[data-service]') || pIn;
+  if(t) t.focus({ preventScroll: true });
+}, less ? 0 : 300);
+track('max_stub_click');
+});
+D.addEventListener('click', function(e){
+var el = e.target.closest && e.target.closest('.chip[data-service], .sit[data-service]');
 if(!el || !F) return;
 setService(el);
 setStep(2, el.classList.contains('chip'));
@@ -130,7 +155,7 @@ startForm(el.classList.contains('sit') ? 'situation' : 'chip');
 // Один старт на первый контакт: блок берём с элемента, который получил фокус.
 F.addEventListener('focusin', function(e){
 var t = e.target;
-startForm(t && t.closest ? (t.closest('.sit[data-service]') ? 'situation' : t.closest('.chip[data-service-code]') ? 'chip' : '') : '');
+startForm(t && t.closest ? (t.closest('.sit[data-service]') ? 'situation' : t.closest('.chip[data-service]') ? 'chip' : '') : '');
 }, { once: true });
 sIn.addEventListener('input', function(){
 if(sIn.value.trim() ){ chosen = ''; code = null; paint(); err('lead-service'); }
