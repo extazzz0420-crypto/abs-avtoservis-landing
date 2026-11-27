@@ -380,7 +380,14 @@ h2 {
   padding-block: var(--section-y);
 }
 .final h2 { color: var(--on-deep); }
-.final .lead { color: var(--on-deep-2); }
+.final .lead, .final .kzp-lede { color: var(--on-deep-2); }
+/* На тёмной секции синий контур не читается: канал получает светлый вариант */
+.final .btn--msg-ghost { border-color: var(--on-deep-2); color: var(--on-deep); }
+.final .btn--msg-ghost:hover { background: rgb(255 255 255 / 0.08); border-color: var(--on-deep); color: var(--on-deep); }
+.final .soon { border-color: var(--line-dark); color: var(--on-deep-2); }
+/* Главная кнопка на тёмной секции — светлая: navy-заливка на night не читается */
+.final__actions .btn:not(.btn--msg-ghost) { background: var(--on-deep); border-color: var(--on-deep); color: var(--deep); }
+.final__actions .btn:not(.btn--msg-ghost):hover { background: #fff; border-color: #fff; }
 .final__grid { display: grid; gap: 2.5rem; }
 .final__actions {
   display: flex;
